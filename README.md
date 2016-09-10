@@ -1,1 +1,1 @@
-# notes
+That's the repository of the first project @ HSR, the notes web application 
