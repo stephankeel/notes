@@ -1,28 +1,48 @@
-header, footer {
-    background: yellow;
-    width: 100%;
-/*    clear: both; *//* stops the float of the previous elements */
+body {
+    font-family: Arial, Verdana, sans-serif;
+    background-color: linen;
 }
 
-main {
-    background: forestgreen;
-    width: 60%;
-    /*    float: left; */
+#mainTitle {
+    color: red;
+    border-color: black;
+    border-width: 5px;
+    background-color: green;
 }
 
-nav {
-    background: skyblue;
-    width: 20%;
-/*    float: left; */
-}
-
-aside {
-    background: grey;
-    width: 20%;
-    /*    float: left; */
-}
-
-div {
+header {
     display: flex;
-    flex-flow: row wrap;
+}
+
+header, footer {
+    background-color: navajowhite;
+}
+
+#styleSelection {
+    color: green;
+    height: 100%;
+    margin: auto 1em auto auto;
+    background-color: yellow;
+}
+
+#content {
+    margin: 1em;
+}
+
+#buttonSection {
+    display: flex;
+}
+
+#notesSelection {
+    margin: auto 0 auto auto;
+}
+
+#notesSection {
+    background-color: white;
+}
+
+footer {
+    font-size: 80%;
+    text-align-last: right;
+    padding: 0.5em;
 }
