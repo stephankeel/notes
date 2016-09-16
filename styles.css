@@ -1,0 +1,28 @@
+header, footer {
+    background: yellow;
+    width: 100%;
+/*    clear: both; *//* stops the float of the previous elements */
+}
+
+main {
+    background: forestgreen;
+    width: 60%;
+    /*    float: left; */
+}
+
+nav {
+    background: skyblue;
+    width: 20%;
+/*    float: left; */
+}
+
+aside {
+    background: grey;
+    width: 20%;
+    /*    float: left; */
+}
+
+div {
+    display: flex;
+    flex-flow: row wrap;
+}
