@@ -45,6 +45,31 @@ header {
     background-color: white;
 }
 
+#divInput {
+    margin: 10px;
+}
+
+#divInput label {
+    position: absolute;
+    margin-top: 0.5em;
+}
+
+.myInput {
+    margin: 0.5em 0 0 100px;
+}
+
+.formButton {
+    margin-top: 1em;
+    margin-right: 1em;
+}
+
+#priorityGroup {
+}
+
+#editForm {
+    width: 100%;
+}
+
 footer {
     font-size: 80%;
     text-align-last: right;

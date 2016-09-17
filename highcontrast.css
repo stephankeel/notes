@@ -17,6 +17,11 @@ header {
     margin: auto auto auto 10px;
 }
 
+#editTitle {
+    color: yellow;
+    margin: auto auto auto 10px;
+}
+
 #styleSelection {
     color: green;
     height: 100%;

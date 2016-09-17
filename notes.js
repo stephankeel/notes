@@ -5,8 +5,12 @@
 
 
 function selectCSS(id, name){
-    log("selectCSS: " + id + ", " + name);
     document.getElementById(id).setAttribute('href', name);
+    log("selectCSS: " + id + ", " + name + " --> " + document.getElementById(id).getAttribute('href'));
+}
+
+function getCurrentCSS() {
+    return t.getElementById("style").getAttribute("href");
 }
 
 function createNewNote() {
@@ -30,5 +34,9 @@ function filterNotes(value) {
 }
 
 function log(text) {
-    document.getElementById("placeholder").innerHTML = text;
+    var dst = document.getElementById("placeholder");
+    if (!dst) {
+        dst = document.getElementById("logArea");
+    }
+    dst.innerHTML = text;
 }

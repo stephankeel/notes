@@ -7,7 +7,6 @@
 </head>
 
 <body>
-<script>console.log("Starting");</script>
 <header>
     <h1 id="mainTitle">Notes - Overview</h1>
     <select id="styleSelection" title="CSS Selection" onchange="selectCSS('style', this.options[this.selectedIndex].value)">
@@ -17,7 +16,7 @@
 </header>
 <div id="content">
     <div id="buttonSection">
-        <input type="button" id="createButton" value="New" onclick="createNewNote()">
+        <input type="button" id="createButton" value="New" onclick="location.href='edit.html'">
         <div id="filterSection">
             <input type="button" id="orderByCompletionDateButton" value="By Completed Date" onclick="orderByCompletionDate()">
             <input type="button" id="orderByCreationDateButton" value="By Creation Date"
