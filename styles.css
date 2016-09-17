@@ -1,36 +1,40 @@
 body {
     font-family: Arial, Verdana, sans-serif;
     background-color: linen;
-}
-
-#mainTitle {
-    color: red;
-    border-color: black;
-    border-width: 5px;
-    background-color: green;
-}
-
-header {
-    display: flex;
+    border: solid navajowhite;
+    border-width: 0 5px;
 }
 
 header, footer {
     background-color: navajowhite;
 }
 
+header {
+    display: flex;
+}
+
+#mainTitle {
+    color: red;
+    margin: auto auto auto 10px;
+}
+
 #styleSelection {
     color: green;
     height: 100%;
-    margin: auto 1em auto auto;
+    margin: auto 10px auto auto;
     background-color: yellow;
 }
 
 #content {
-    margin: 1em;
+    margin: 10px;
 }
 
 #buttonSection {
     display: flex;
+}
+
+#filterSection {
+    margin-left: 1.5em;
 }
 
 #notesSelection {
@@ -44,5 +48,5 @@ header, footer {
 footer {
     font-size: 80%;
     text-align-last: right;
-    padding: 0.5em;
+    padding: 10px;
 }
