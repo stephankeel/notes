@@ -2,27 +2,29 @@
 <html>
 <head>
     <title>Notes-Application</title>
-    <link rel="stylesheet" href="standard.css">
+    <link id="style" rel="stylesheet" href="standard.css">
+    <script type="text/javascript" src="notes.js"></script>
 </head>
 
 <body>
+<script>console.log("Starting");</script>
 <header>
     <h1 id="mainTitle">Notes - Overview</h1>
-    <select id="styleSelection">
-        <option value="standard">standard</option>
-        <option value="highContrast">high contrast</option>
+    <select id="styleSelection" title="CSS Selection" onchange="selectCSS('style', this.options[this.selectedIndex].value)">
+        <option value="standard.css">standard</option>
+        <option value="highcontrast.css">high contrast</option>
     </select>
 </header>
 <div id="content">
     <div id="buttonSection">
         <input type="button" id="createButton" value="New" onclick="createNewNote()">
         <div id="filterSection">
-            <input type="button" id="orderByFinishDateButton" value="By Completed Date" onclick="createNewNote()">
+            <input type="button" id="orderByCompletionDateButton" value="By Completed Date" onclick="orderByCompletionDate()">
             <input type="button" id="orderByCreationDateButton" value="By Creation Date"
                    onclick="orderByCreationDate()">
             <input type="button" id="orderByImportanceButton" value="By Importance" onclick="orderByImportance()">
         </div>
-        <select id="notesSelection">
+        <select id="notesSelection" title="Notes Filter" onchange="filterNotes(this.options[this.selectedIndex].value)">
             <option value="all notes">show all</option>
             <option value="complete notes">show completed</option>
             <option value="open notes">show open</option>
@@ -30,10 +32,9 @@
     </div>
 
     <div id="notesSection">
-        <p>Placeholder for the notes</p>
+        <p id="placeholder">Placeholder for the notes</p>
     </div>
 </div>
-
 <footer>&copy 2016 Stephan Keel</footer>
 </body>
 </html>
