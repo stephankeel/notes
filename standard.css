@@ -13,28 +13,47 @@ header {
     display: flex;
 }
 
+footer {
+    font-size: 80%;
+    text-align-last: right;
+    padding: 10px;
+}
+
+
+/* Shared */
+
+.logArea:before {
+    content: "Log: "
+}
+
+
+/* Overview Section - Main section */
+
+#mainSection {
+}
+
+#mainContent {
+    margin: 10px;
+}
+
 #mainTitle {
     color: red;
-    margin: auto auto auto 10px;
+    margin: 10px;
 }
 
 #styleSelection {
-    color: green;
     height: 100%;
     margin: auto 10px auto auto;
     background-color: yellow;
 }
 
-#content {
-    margin: 10px;
-}
-
 #buttonSection {
     display: flex;
+    margin: 10px 0;
 }
 
 #filterSection {
-    margin-left: 1.5em;
+    margin-left: 1em;
 }
 
 #notesSelection {
@@ -45,33 +64,35 @@ header {
     background-color: white;
 }
 
-#divInput {
+
+/* Edit section */
+
+#editSection {
+    display: none;
+}
+
+#editForm {
     margin: 10px;
 }
 
-#divInput label {
+#editForm label {
     position: absolute;
-    margin-top: 0.5em;
+    margin-top: 12px;
 }
 
 .myInput {
-    margin: 0.5em 0 0 100px;
-}
-
-.formButton {
-    margin-top: 1em;
-    margin-right: 1em;
+    margin-top: 10px;
+    margin-left: 100px;
 }
 
 #priorityGroup {
 }
 
-#editForm {
-    width: 100%;
+#dueDate {
 }
 
-footer {
-    font-size: 80%;
-    text-align-last: right;
-    padding: 10px;
+.formButton {
+    margin-top: 10px;
+    margin-right: 1em;
 }
+
