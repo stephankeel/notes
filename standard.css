@@ -22,6 +22,10 @@ footer {
 
 /* Shared */
 
+input[type="button"], select {
+    font-size: 11pt;
+}
+
 .logArea:before {
     content: "Log: "
 }
@@ -30,6 +34,7 @@ footer {
 /* Overview Section - Main section */
 
 #mainSection {
+    font-size: 11pt;
 }
 
 #mainContent {
@@ -64,11 +69,66 @@ footer {
     background-color: white;
 }
 
+/* Notes table */
+
+#notesTable {
+    width: 100%;
+}
+
+#notesTable tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#notesTable tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dueDateCell {
+    margin: auto auto auto 5px;
+    width: 8em;
+}
+
+.dueDateDiv {
+    display: flex;
+    flex-direction: row;
+}
+
+.titleDetailsAndPrioCell {
+}
+
+.titleAndPrio {
+    display: flex;
+}
+
+.notePrio {
+    margin: auto 5px auto auto;
+    horiz-align: right;
+}
+
+.noteDetails {
+    font-family: inherit;
+    font-size: inherit;
+    box-sizing: border-box;
+    resize: vertical;
+    width: 100%;
+}
+
+.editCell {
+    width: 3em;
+    vertical-align: top;
+}
+
+.editButton {
+    margin: 0.5em;
+    height: 2.5em;
+}
+
 
 /* Edit section */
 
 #editSection {
     display: none;
+    font-size: 11pt;
 }
 
 #editForm {
@@ -81,6 +141,8 @@ footer {
 }
 
 .myInput {
+    font-family: inherit;
+    font-size: inherit;
     margin-top: 10px;
     margin-left: 100px;
 }

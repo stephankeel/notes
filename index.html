@@ -36,8 +36,66 @@
         </div>
 
         <div id="notesSection">
-            <p id="placeholder" class="logArea">Placeholder for the notes</p>
+            <table id="notesTable">
+                <tr class="noteRow">
+                    <td class="dueDateCell">
+                        <p class="dueDateP">22.09.2016</p>
+                        <div class="dueDateDiv">
+                            <input class="dueDateCB" type="checkbox" name="dueDate" value="completed">completed
+                        </div>
+                    </td>
+                    <td class="titleDetailsAndPrioCell">
+                        <div class="titleAndPrio">
+                            <p class="noteTitle">This is the title of a note</p>
+                            <p class="notePrio">Prio 3</p>
+                        </div>
+                        <textarea class="noteDetails" name="noteDetails" readonly rows="2">This are the details of a note.</textarea>
+                    </td>
+                    <td class="editCell">
+                        <input class="editButton" type="button" value="Edit" onclick="editNote()">
+                    </td>
+                </tr>
+
+                <tr class="noteRow">
+                    <td class="dueDateCell">
+                        <p class="dueDateP">23.09.2016</p>
+                        <div class="dueDateDiv">
+                            <input class="dueDateCB" type="checkbox" name="dueDate" value="completed">completed
+                        </div>
+                    </td>
+                    <td class="titleDetailsAndPrioCell">
+                        <div class="titleAndPrio">
+                            <p class="noteTitle">This is the title of another note</p>
+                            <p class="notePrio">Prio 5</p>
+                        </div>
+                        <textarea class="noteDetails" name="noteDetails" readonly rows="2">This are the details of another note.</textarea>
+                    </td>
+                    <td class="editCell">
+                        <input class="editButton" type="button" value="Edit" onclick="editNote()">
+                    </td>
+                </tr>
+
+                <tr class="noteRow">
+                    <td class="dueDateCell">
+                        <p class="dueDateP">05.10.2016</p>
+                        <div class="dueDateDiv">
+                            <input class="dueDateCB" type="checkbox" name="dueDate" value="completed">completed
+                        </div>
+                    </td>
+                    <td class="titleDetailsAndPrioCell">
+                        <div class="titleAndPrio">
+                            <p class="noteTitle">This is the title of a note 3</p>
+                            <p class="notePrio">Prio 2</p>
+                        </div>
+                        <textarea class="noteDetails" name="noteDetails" readonly rows="2">This are the details of a 3rd note.</textarea>
+                    </td>
+                    <td class="editCell">
+                        <input class="editButton" type="button" value="Edit" onclick="editNote()">
+                    </td>
+                </tr>
+            </table>
         </div>
+        <p class="logArea"></p>
     </div>
 </div>
 
