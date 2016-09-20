@@ -14,15 +14,30 @@ function activateEdit() {
     document.getElementById("mainTitle").innerHTML = "Notes - Edit";
 }
 
-function saveNote() {
+function saveEditResult() {
     // Store the note
     // TODO
+    var params = '';
+    for (var i = 0; i < document.editForm.elements.length; i++) {
+        var fieldName = document.editForm.elements[i].name;
+        if (fieldName) {
+            var fieldValue = document.editForm.elements[i].value;
+            params += fieldName + '=' + fieldValue + '&';
+        }
+    }
+
+    log("save edit result: " + params);
 
     // Activate the main page again
     activateMain();
 }
 
-function selectCSS(id, name){
+function cancelEdit() {
+    log("edit cancelled");
+    activateMain();
+}
+
+function selectCSS(id, name) {
     document.getElementById(id).setAttribute('href', name);
     log("selectCSS: " + id + ", " + name + " --> " + document.getElementById(id).getAttribute('href'));
 }
