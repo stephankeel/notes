@@ -17,16 +17,8 @@ function activateEdit() {
 function saveEditResult() {
     // Store the note
     // TODO
-    var params = '';
-    for (var i = 0; i < document.editForm.elements.length; i++) {
-        var fieldName = document.editForm.elements[i].name;
-        if (fieldName) {
-            var fieldValue = document.editForm.elements[i].value;
-            params += fieldName + '=' + fieldValue + '&';
-        }
-    }
-
-    log("save edit result: " + params);
+    var formData = JSON.stringify($("#editForm").serializeArray());
+    log("save edit result: " + formData);
 
     // Activate the main page again
     activateMain();
