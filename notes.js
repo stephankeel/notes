@@ -3,15 +3,15 @@
  */
 
 function activateMain() {
-    document.getElementById("mainSection").style.display = "inline";
-    document.getElementById("editSection").style.display = "none";
-    document.getElementById("mainTitle").innerHTML = "Notes - Overview";
+    $("#mainSection").show();
+    $("#editSection").hide();
+    $("#mainTitle").text("Notes - Overview");
 }
 
 function activateEdit() {
-    document.getElementById("mainSection").style.display = "none";
-    document.getElementById("editSection").style.display = "inline";
-    document.getElementById("mainTitle").innerHTML = "Notes - Edit";
+    $("#mainSection").hide();
+    $("#editSection").show();
+    $("#mainTitle").text("Notes - Edit");
 }
 
 function saveEditResult() {
