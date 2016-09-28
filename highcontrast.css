@@ -1,44 +1,70 @@
 body {
     font-family: Arial, Verdana, sans-serif;
     background-color: black;
-
+    border: solid dimgrey;
+    border-width: 0 5px;
+    color: white;
 }
 
 header, footer {
-    background-color: rgba(90, 90, 90, 0.82);
+    background-color: dimgrey;
 }
 
 header {
     display: flex;
 }
 
-#mainTitle {
-    color: orangered;
-    margin: auto auto auto 10px;
+footer {
+    font-size: 80%;
+    text-align-last: right;
+    padding: 10px;
 }
 
-#editTitle {
-    color: yellow;
-    margin: auto auto auto 10px;
+
+/* Shared */
+
+input[type="button"], select {
+    font-size: 11pt;
+    color: white;
+    background: black;
+    border: solid white;
+    border-width: 1px;
+}
+
+.logArea:before {
+    content: "Log: "
+}
+
+
+/* Overview Section - Main section */
+
+#mainSection {
+    font-size: 11pt;
+}
+
+#mainContent {
+    margin: 10px;
+}
+
+#mainTitle {
+    color: red;
+    margin: 10px;
 }
 
 #styleSelection {
-    color: green;
     height: 100%;
     margin: auto 10px auto auto;
     background-color: yellow;
-}
-
-#content {
-    margin: 10px;
+    color: black;
 }
 
 #buttonSection {
     display: flex;
+    margin: 10px 0;
 }
 
 #filterSection {
-    margin-left: 1.5em;
+    margin-left: 1em;
 }
 
 #notesSelection {
@@ -49,9 +75,94 @@ header {
     background-color: white;
 }
 
-footer {
-    color: white;
-    font-size: 80%;
-    text-align-last: right;
-    padding: 10px;
+/* Notes table */
+
+#notesTable {
+    width: 100%;
 }
+
+#notesTable tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#notesTable tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.dueDateCell {
+    margin: auto auto auto 5px;
+    width: 8em;
+}
+
+.dueDateDiv {
+    display: flex;
+    flex-direction: row;
+}
+
+.titleDetailsAndPrioCell {
+}
+
+.titleAndPrio {
+    display: flex;
+}
+
+.notePrio {
+    margin: auto 5px auto auto;
+    horiz-align: right;
+}
+
+.noteDetails {
+    font-family: inherit;
+    font-size: inherit;
+    color: white;
+    box-sizing: border-box;
+    resize: vertical;
+    width: 100%;
+    background-color:black;
+}
+
+.editCell {
+    width: 3em;
+    vertical-align: top;
+}
+
+.editButton {
+    margin: 0.5em;
+    height: 2.5em;
+}
+
+
+/* Edit section */
+
+#editSection {
+    display: none;
+    font-size: 11pt;
+}
+
+#editForm {
+    margin: 10px;
+}
+
+#editForm label {
+    position: absolute;
+    margin-top: 12px;
+}
+
+.myInput {
+    font-family: inherit;
+    font-size: inherit;
+    margin-top: 10px;
+    margin-left: 100px;
+}
+
+#priorityGroup {
+}
+
+#dueDate {
+}
+
+.formButton {
+    margin-top: 10px;
+    margin-right: 1em;
+}
+
