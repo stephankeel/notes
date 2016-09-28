@@ -117,7 +117,7 @@ input[type="button"], select {
     color: white;
     box-sizing: border-box;
     resize: vertical;
-    width: 100%;
+    width: 99%;
     background-color:black;
 }
 
