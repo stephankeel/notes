@@ -23,7 +23,7 @@ footer {
 
 /* Shared */
 
-input[type="button"], select {
+input[type="button"], select, .formButton {
     font-size: 11pt;
     color: white;
     background: black;
