@@ -1,11 +1,11 @@
-/**
- * Created by Stephan on 17.09.2016.
- */
+'use strict'
 
 var CSS_STORAGE_KEY = "notes-css";
 
+
 log("jquery version " + $.fn.jquery);
 init();
+
 
 function init() {
     var storedCSS = localStorage.getItem(CSS_STORAGE_KEY);
@@ -13,6 +13,8 @@ function init() {
         var selectedCSS = JSON.parse(storedCSS);
         selectCSS(selectedCSS.id, selectedCSS.name, false);
     }
+
+    initNoteRenderer();
 }
 
 function activateMain() {
@@ -42,7 +44,7 @@ function cancelEdit() {
     activateMain();
 }
 
-function selectCSS(id, name, save=true) {
+function selectCSS(id, name, save = true) {
     document.getElementById(id).setAttribute('href', name);
     if (save) {
         var selectedCSS = {id: id, name: name};
@@ -50,19 +52,21 @@ function selectCSS(id, name, save=true) {
     } else {
         document.getElementById("styleSelection").value = name;
     }
-    log("selectCSS: " + id + ", " + name + " --> " + document.getElementById(id).getAttribute('href') + ", saved: " + save);
 }
 
 function orderByCompletionDate() {
     log("orderByCompletionDate clicked");
+    renderNodesByCompletionDate();
 }
 
-function orderByCreationDate() {
-    log("orderByCreationDate clicked");
+function orderByDueDate() {
+    log("orderByDueDate clicked");
+    renderNodesByDueDate();
 }
 
 function orderByImportance() {
     log("orderByImportance clicked");
+    renderNotesByPriority();
 }
 
 function filterNotes(value) {

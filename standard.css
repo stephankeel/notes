@@ -84,13 +84,17 @@ input[type="button"], select {
 }
 
 .dueDateCell {
-    margin: auto auto auto 5px;
-    width: 8em;
+    padding: 5px;
+    width: 12.5em;
+    min-width: 12.5em;
+
 }
 
 .dueDateDiv {
     display: flex;
+    margin: -3px;
     flex-direction: row;
+    align: right;
 }
 
 .titleDetailsAndPrioCell {
