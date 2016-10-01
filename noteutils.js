@@ -29,6 +29,15 @@ function activateEdit() {
     $("#mainTitle").text("Notes - Edit");
 }
 
+function editNote(id) {
+    log("edit note: " + id);
+    var note = getNoteById(id);
+    document.getElementById("title").value = note.title;
+    document.getElementById("details").value = note.details;
+    document.getElementById("dueDate").value = note.dueDate;
+    activateEdit();
+}
+
 function saveEditResult() {
     // Store the note
     // TODO

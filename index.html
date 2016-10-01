@@ -11,7 +11,7 @@
                 <td class="dueDateCell">
                     <p class="dueDateP">{{"myDateFormatter" dueDate "de-DE"}}</p>
                     <div class="dueDateDiv">
-                        <input class="dueDateCB" type="checkbox" name="dueDate" value="completed" disabled {{#if completed}} checked {{/if}}>completed {{#if completed}}[{{"myDateFormatter" completionDate "de-DE"}}]{{/if}}</input>
+                        <input class="dueDateCB" type="checkbox" name="dueDate" value="completed" disabled {{#if completed}} checked{{/if}}>completed {{#if completed}}[{{"myDateFormatter" completionDate "de-DE"}}]{{/if}}</input>
                     </div>
                 </td>
                 <td class="titleDetailsAndPrioCell">
@@ -22,7 +22,7 @@
                     <textarea class="noteDetails" name="noteDetails" readonly rows="2">{{details}}</textarea>
                 </td>
                 <td class="editCell">
-                    <input class="editButton" type="button" value="Edit" onclick="editNote()">
+                    <input class="editButton" type="button" value="Edit" onclick="editNote({{id}})">
                 </td>
             </tr>
             {{/each}}

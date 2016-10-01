@@ -12,3 +12,7 @@ noteList[6] = new Note("REST API", "Die REST API vom Server implementieren. Dies
 noteList[7] = new Note("Finalisieren & Abgabe", "Projekt 1 ferigstellen und am 10.11.2016 durch Mail mit Link zun Github Branch", new Date("2016-11-08"), 5);
 
 noteList.filter(node => node.dueDate < Date.now()).forEach(node => node.setCompleted(true));
+
+function getNoteById(id) {
+    return noteList.filter(n => n.id === id)[0];
+}

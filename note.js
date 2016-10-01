@@ -1,7 +1,9 @@
 'use strict'
 
+var nextId = 1;
+
 function Note(title, details, dueDate, priority) {
-    this.id = Date.now();
+    this.id = nextId++;
     this.title = title;
     this.details = details;
     this.dueDate = dueDate;
