@@ -18,6 +18,7 @@ function init() {
 }
 
 function activateMain() {
+    $("#editForm")[0].reset();
     $("#mainSection").show();
     $("#editSection").hide();
     $("#mainTitle").text("Notes - Overview");
@@ -32,9 +33,10 @@ function activateEdit() {
 function editNote(id) {
     log("edit note: " + id);
     var note = getNoteById(id);
-    document.getElementById("title").value = note.title;
-    document.getElementById("details").value = note.details;
-    document.getElementById("dueDate").value = note.dueDate;
+    $("#title").val(note.title);
+    $("#details").val(note.details);
+    $("#priority" + note.priority).prop("checked", true);
+    $("#dueDate").val(moment(note.dueDate).format('YYYY-MM-DD'));
     activateEdit();
 }
 
