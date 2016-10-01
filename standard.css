@@ -71,6 +71,12 @@ input[type="button"], select {
 
 /* Notes table */
 
+#tableScroll {
+    min-height: 200px;
+    max-height: 500px;
+    overflow:auto;
+}
+
 #notesTable {
     width: 100%;
 }
