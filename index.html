@@ -21,8 +21,9 @@
                     </div>
                     <textarea class="noteDetails" name="noteDetails" readonly rows="2">{{details}}</textarea>
                 </td>
-                <td class="editCell">
-                    <input class="editButton" type="button" value="Edit" onclick="editNote({{id}})">
+                <td class="editDeleteCell" id="editDeleteCell{{id}}">
+                    <input class="editDeleteButton" id="editButton{{id}}" type="button" value="Edit" onclick="editNote({{id}})">
+                    <input class="editDeleteButton" type="button" value="Delete" onclick="deleteNote({{id}})">
                 </td>
             </tr>
             {{/each}}

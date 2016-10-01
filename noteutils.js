@@ -2,6 +2,11 @@
 
 var CSS_STORAGE_KEY = "notes-css";
 
+var currentNote = null;
+var deleteConfirmed = false;
+var colorPreConfirmDelete = null;
+var namePreConfirmeDelete = null;
+var confirmId = null;
 
 log("jquery version " + $.fn.jquery);
 init();
@@ -18,6 +23,7 @@ function init() {
 }
 
 function activateMain() {
+    currentNote = null;
     $("#editForm")[0].reset();
     $("#mainSection").show();
     $("#editSection").hide();
@@ -31,20 +37,44 @@ function activateEdit() {
 }
 
 function editNote(id) {
-    log("edit note: " + id);
-    var note = getNoteById(id);
-    $("#title").val(note.title);
-    $("#details").val(note.details);
-    $("#priority" + note.priority).prop("checked", true);
-    $("#dueDate").val(moment(note.dueDate).format('YYYY-MM-DD'));
-    activateEdit();
+    if (deleteConfirmed) {
+        abortDelete();
+    } else {
+        log("edit note: " + id);
+        currentNote = getNoteById(id);
+        $("#title").val(currentNote.title);
+        $("#details").val(currentNote.details);
+        $("#priority" + currentNote.priority).prop("checked", true);
+        $("#dueDate").val(moment(currentNote.dueDate).format('YYYY-MM-DD'));
+        activateEdit();
+    }
+}
+
+function abortDelete() {
+    $("#editDeleteCell" + confirmId).css("background-color", colorPreConfirmDelete);
+    $("#editButton" + confirmId).val(namePreConfirmeDelete);
+    deleteConfirmed = false;
+    confirmId = null;
+    log("abort cancel note");
 }
 
 function saveEditResult() {
     // Store the note
-    // TODO
+    if (!currentNote) {
+        currentNote = new Note();
+    }
+    currentNote.title = $("#title").val();
+    currentNote.details = $("#details").val();
+    currentNote.priority = $("#priorityGroup input[type='radio']:checked").val();
+    var ddd = $("#dueDate").val();
+    currentNote.dueDate = new Date($("#dueDate").val());
+
+    setNoteById(currentNote);
+
     var formData = JSON.stringify($("#editForm").serializeArray());
     log("save edit result: " + formData);
+
+    renderNodesByCompletionDate();
 
     // Activate the main page again
     activateMain();
@@ -53,6 +83,24 @@ function saveEditResult() {
 function cancelEdit() {
     log("edit cancelled");
     activateMain();
+}
+
+function deleteNote(id) {
+    if (!deleteConfirmed) {
+        deleteConfirmed = true;
+        confirmId = id;
+        colorPreConfirmDelete = $("#editDeleteCell" + id).css("background-color");
+        $("#editDeleteCell" + id).css("background-color", "red");
+        namePreConfirmeDelete = $("#editButton" + id).val();
+        $("#editButton" + id).val("Abort");
+    } else if (id != confirmId) {
+        abortDelete();
+    } else {
+        deleteConfirmed = false;
+        log("delete note: " + id);
+        deleteNoteById(id);
+        renderNodesByCompletionDate();
+    }
 }
 
 function selectCSS(id, name, save = true) {

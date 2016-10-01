@@ -117,12 +117,12 @@ input[type="button"], select {
     width: 100%;
 }
 
-.editCell {
+.editDeleteCell {
     width: 3em;
     vertical-align: top;
 }
 
-.editButton {
+.editDeleteButton {
     margin: 0.5em;
     height: 2.5em;
 }
