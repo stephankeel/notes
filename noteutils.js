@@ -74,7 +74,7 @@ function saveEditResult() {
     var formData = JSON.stringify($("#editForm").serializeArray());
     log("save edit result: " + formData);
 
-    renderNodesByCompletionDate();
+    reRender();
 
     // Activate the main page again
     activateMain();
@@ -99,28 +99,29 @@ function deleteNote(id) {
         deleteConfirmed = false;
         log("delete note: " + id);
         deleteNoteById(id);
-        renderNodesByCompletionDate();
+        reRender();
     }
 }
 
 function selectCSS(id, name, save = true) {
-    document.getElementById(id).setAttribute('href', name);
+//    document.getElementById(id).setAttribute('href', name);
+    $("#" + id).attr('href', name);
     if (save) {
         var selectedCSS = {id: id, name: name};
         localStorage.setItem(CSS_STORAGE_KEY, JSON.stringify(selectedCSS));
     } else {
-        document.getElementById("styleSelection").value = name;
+        $("#styleSelection").val(name);
     }
 }
 
 function orderByCompletionDate() {
     log("orderByCompletionDate clicked");
-    renderNodesByCompletionDate();
+    renderNotesByCompletionDate();
 }
 
 function orderByDueDate() {
     log("orderByDueDate clicked");
-    renderNodesByDueDate();
+    renderNotesByDueDate();
 }
 
 function orderByImportance() {
@@ -130,6 +131,7 @@ function orderByImportance() {
 
 function filterNotes(value) {
     log("filterNotes: " + value);
+    renderFilteredNotes(value);
 }
 
 function log(text) {

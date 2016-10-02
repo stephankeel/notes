@@ -50,12 +50,12 @@
     <div id="mainContent">
         <div id="buttonSection">
             <input type="button" id="createButton" value="New" onclick="activateEdit()">
-            <div id="filterSection">
-                <input type="button" id="orderByCompletionDateButton" value="By Completed Date"
+            <div id="sortingSection">
+                <input type="button" class="filterButton" id="orderByCompletionDateButton" value="By Completed Date"
                        onclick="orderByCompletionDate()">
-                <input type="button" id="orderByDueDateButton" value="By Due Date"
+                <input type="button" class="filterButton" id="orderByDueDateButton" value="By Due Date"
                        onclick="orderByDueDate()">
-                <input type="button" id="orderByImportanceButton" value="By Importance" onclick="orderByImportance()">
+                <input type="button" class="filterButton" id="orderByPriorityButton" value="By Priority" onclick="orderByImportance()">
             </div>
             <select id="notesSelection" title="Notes Filter"
                     onchange="filterNotes(this.options[this.selectedIndex].value)">
