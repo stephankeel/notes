@@ -49,13 +49,14 @@
 <div id="mainSection">
     <div id="mainContent">
         <div id="buttonSection">
-            <input type="button" id="createButton" value="New" onclick="activateEdit()">
+            <input type="button" id="createButton" value="New" onclick="createNote()">
             <div id="sortingSection">
                 <input type="button" class="filterButton" id="orderByCompletionDateButton" value="By Completed Date"
                        onclick="orderByCompletionDate()">
                 <input type="button" class="filterButton" id="orderByDueDateButton" value="By Due Date"
                        onclick="orderByDueDate()">
-                <input type="button" class="filterButton" id="orderByPriorityButton" value="By Priority" onclick="orderByImportance()">
+                <input type="button" class="filterButton" id="orderByPriorityButton" value="By Priority"
+                       onclick="orderByImportance()">
             </div>
             <select id="notesSelection" title="Notes Filter"
                     onchange="filterNotes(this.options[this.selectedIndex].value)">
@@ -76,13 +77,16 @@
         <input class="myInput" id="title" type="text" name="title" size="30" maxlength="50"><br>
         <label for="details">Details</label>
         <textarea class="myInput" id="details" name="details" cols="100" rows="4"></textarea><br>
-        <label for="priorityGroup">Priority</label>
-        <div class="myInput" id="priorityGroup">
-            <input id="priority1" type="radio" name="proprity" title="Lowest Priority" value="1">
-            <input id="priority2" type="radio" name="proprity" title="Low Priority" value="2">
-            <input id="priority3" type="radio" name="proprity" title="Medium Priority" value="3">
-            <input id="priority4" type="radio" name="proprity" title="High Priority" value="4">
-            <input id="priority5" type="radio" name="proprity" title="Highest Priority" value="5">
+        <div id="prioRow">
+            <label for="priorityGroup">Priority</label>
+            <div class="myInput" id="priorityGroup">
+                <input id="priority1" type="radio" name="proprity" title="Lowest Priority" value="1">
+                <input id="priority2" type="radio" name="proprity" title="Low Priority" value="2">
+                <input id="priority3" type="radio" name="proprity" title="Medium Priority" value="3">
+                <input id="priority4" type="radio" name="proprity" title="High Priority" value="4">
+                <input id="priority5" type="radio" name="proprity" title="Highest Priority" value="5">
+            </div>
+            <p id="selectedPriority">5</p>
         </div>
         <label for="dueDate">Due Date</label>
         <input class="myInput" id="dueDate" type="date" name="dueDate"><br>

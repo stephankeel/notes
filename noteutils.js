@@ -20,6 +20,10 @@ function init() {
     }
 
     initNoteRenderer();
+
+    $('input[type=radio][name=proprity]').change(function() {
+        $("#selectedPriority").text(this.value);
+    });
 }
 
 function activateMain() {
@@ -34,6 +38,13 @@ function activateEdit() {
     $("#mainSection").hide();
     $("#editSection").show();
     $("#mainTitle").text("Notes - Edit");
+
+}
+
+function createNote() {
+    $("#priority1").prop("checked", true);
+    $("#selectedPriority").text(1);
+    activateEdit();
 }
 
 function editNote(id) {
@@ -46,6 +57,7 @@ function editNote(id) {
         $("#details").val(currentNote.details);
         $("#priority" + currentNote.priority).prop("checked", true);
         $("#dueDate").val(moment(currentNote.dueDate).format('YYYY-MM-DD'));
+        $("#selectedPriority").text(currentNote.priority);
         activateEdit();
     }
 }
@@ -135,6 +147,5 @@ function filterNotes(value) {
 }
 
 function log(text) {
-    var dst = document.getElementsByClassName("logArea")[0];
-    dst.innerHTML = text;
+    $(".logArea").text(text);
 }
