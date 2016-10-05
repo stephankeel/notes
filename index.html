@@ -73,24 +73,31 @@
 
 <div id="editSection">
     <form id="editForm" name="editForm" title="Edit Form" action="javascript:saveEditResult()">
-        <label for="title">Title</label>
-        <input class="myInput" id="title" type="text" name="title" size="30" maxlength="50"><br>
-        <label for="details">Details</label>
-        <textarea class="myInput" id="details" name="details" cols="100" rows="4"></textarea><br>
-        <div id="prioRow">
-            <label for="priorityGroup">Priority</label>
-            <div class="myInput" id="priorityGroup">
+        <div class="gridRow">
+            <p class="gridLabel">Title</p>
+            <input class="gridValue myInput" id="title" type="text" name="title"><br>
+        </div>
+        <div class="gridRow">
+            <p class="gridLabel">Details</p>
+            <textarea class="gridValue myInput" id="details" name="details" rows="4"></textarea><br>
+        </div>
+        <div class="gridRow">
+            <p class="gridLabel">Priority</p>
+            <div class="gridValueA" id="priorityGroup">
                 <input id="priority1" type="radio" name="proprity" title="Lowest Priority" value="1">
                 <input id="priority2" type="radio" name="proprity" title="Low Priority" value="2">
                 <input id="priority3" type="radio" name="proprity" title="Medium Priority" value="3">
                 <input id="priority4" type="radio" name="proprity" title="High Priority" value="4">
                 <input id="priority5" type="radio" name="proprity" title="Highest Priority" value="5">
             </div>
-            <p id="selectedPriority">5</p>
+            <p class="gridValueB" id="selectedPriority"></p>
         </div>
-        <label for="dueDate">Due Date</label>
-        <input class="myInput" id="dueDate" type="date" name="dueDate"><br>
-
+        <div class="gridRow">
+            <p class="gridLabel">Due Date</p>
+            <div class="gridValue" id="divDate">
+                <input class="myInput" id="dueDate" type="date" name="dueDate"><br>
+            </div>
+        </div>
         <input class="formButton" id="saveButton" type="submit" value="Save">
         <input class="formButton" id="cancelButton" type="button" value="Cancel" onclick="cancelEdit()">
         <p class="logArea"></p>
