@@ -75,11 +75,11 @@
     <form id="editForm" name="editForm" title="Edit Form" action="javascript:saveEditResult()">
         <div class="gridRow">
             <p class="gridLabel">Title</p>
-            <input class="gridValue myInput" id="title" type="text" name="title"><br>
+            <input class="gridValue myInput" id="title" type="text" name="title" required><br>
         </div>
         <div class="gridRow">
             <p class="gridLabel">Details</p>
-            <textarea class="gridValue myInput" id="details" name="details" rows="4"></textarea><br>
+            <textarea class="gridValue myInput" id="details" name="details" rows="4" required></textarea><br>
         </div>
         <div class="gridRow">
             <p class="gridLabel">Priority</p>
@@ -95,7 +95,7 @@
         <div class="gridRow">
             <p class="gridLabel">Due Date</p>
             <div class="gridValue" id="divDate">
-                <input class="myInput" id="dueDate" type="date" name="dueDate"><br>
+                <input class="myInput" id="dueDate" type="date" name="dueDate" required><br>
             </div>
         </div>
         <input class="formButton" id="saveButton" type="submit" value="Save">
