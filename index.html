@@ -83,14 +83,14 @@
         </div>
         <div class="gridRow">
             <p class="gridLabel">Priority</p>
-            <div class="gridValueA" id="priorityGroup">
+            <div class="gridRow" id="priorityGroup">
                 <input id="priority1" type="radio" name="proprity" title="Lowest Priority" value="1">
                 <input id="priority2" type="radio" name="proprity" title="Low Priority" value="2">
                 <input id="priority3" type="radio" name="proprity" title="Medium Priority" value="3">
                 <input id="priority4" type="radio" name="proprity" title="High Priority" value="4">
                 <input id="priority5" type="radio" name="proprity" title="Highest Priority" value="5">
             </div>
-            <p class="gridValueB" id="selectedPriority"></p>
+            <p class="gridRow" id="selectedPriority"></p>
         </div>
         <div class="gridRow">
             <p class="gridLabel">Due Date</p>
@@ -105,17 +105,10 @@
 </div>
 
 <footer>&copy; 2016 Stephan Keel</footer>
-<!--
-<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
--->
-<script src="external/jquery-3.1.1.min.js"></script>
-<script src="external/handlebars-v4.0.5.js"></script>
-<script src="external/moment-2.15.1.min.js"></script>
-<script src="note.js"></script>
-<script src="notesmodel.js"></script>
-<script src="noterenderer.js"></script>
-<script src="noteutils.js"></script>
+
+<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js'></script>
+<script src='noteinit.js'></script>
 </body>
 </html>

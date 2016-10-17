@@ -166,14 +166,6 @@ input[type="button"], select {
     align-content: flex-start;
 }
 
-.gridValueA {
-    flex: 0 0 10em;
-}
-
-.gridValueB {
-    flex: 1;
-}
-
 #title {
     background-color: aquamarine;
 }
@@ -189,12 +181,13 @@ input[type="button"], select {
 }
 
 #priorityGroup {
+    flex: 0 0;
     background-color: red;
-    margin-top: 10px;
 }
 
 #selectedPriority {
-
+    flex: 1;
+    margin-left: 10px;
 }
 
 #divDate {
