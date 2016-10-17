@@ -9,4 +9,4 @@ window.moment || document.write('<script src="external/moment-2.15.1.min.js"><\/
 document.write('<script src="note.js"><\/script>');
 document.write('<script src="notesmodel.js"><\/script>');
 document.write('<script src="noterenderer.js"><\/script>');
-document.write('<script src="noteutils.js"><\/script>');
+document.write('<script src="notecontroller.js"><\/script>');

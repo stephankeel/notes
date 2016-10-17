@@ -37,12 +37,12 @@ if (storedNotes) {
 }
 
 function getNoteById(id) {
-    return noteList.filter(n => n.id === id)[0];
+    return noteList.filter(n => n.id == id)[0];
 }
 
 function indexOfNoteWithId(id) {
     for (var index in noteList) {
-        if (noteList[index].id === id) {
+        if (noteList[index].id == id) {
             return index;
         }
     }

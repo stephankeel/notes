@@ -73,12 +73,6 @@ input[type="button"], select {
 
 /* Notes table */
 
-#tableScroll {
-    min-height: 200px;
-    max-height: 500px;
-    overflow: auto;
-}
-
 #notesTable {
     width: 100%;
 }
@@ -167,11 +161,9 @@ input[type="button"], select {
 }
 
 #title {
-    background-color: aquamarine;
 }
 
 #details {
-    background-color: aqua;
 }
 
 .myInput {
@@ -182,7 +174,10 @@ input[type="button"], select {
 
 #priorityGroup {
     flex: 0 0;
-    background-color: red;
+}
+
+.priority {
+      margin: 0.5em 0.5em 0.5em 0;
 }
 
 #selectedPriority {
@@ -191,12 +186,9 @@ input[type="button"], select {
 }
 
 #divDate {
-    background-color: greenyellow;
-
 }
 
 #dueDate {
-    opacity: 0.9;
 }
 
 .formButton {

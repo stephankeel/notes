@@ -41,10 +41,28 @@ function activateEdit() {
 
 }
 
+function getNoteIdOf(element) {
+    var tableRow = element.closest("tr");
+    var id = tableRow.getAttribute("data-note-id");
+    return id;
+}
+
 function createNote() {
     $("#priority1").prop("checked", true);
     $("#selectedPriority").text(1);
     activateEdit();
+}
+
+function completeNote(id) {
+    currentNote = getNoteById(id);
+    currentNote.completed = !currentNote.completed;
+    if (currentNote.completed){
+        currentNote.completionDate = new Date();
+    } else {
+        currentNote.completionDate = null;
+    }
+    setNoteById(currentNote);
+    reRender();
 }
 
 function editNote(id) {

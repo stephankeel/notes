@@ -5,34 +5,31 @@
     <title>Notes-Application</title>
     <link id="style" rel="stylesheet" href="standard.css">
     <script id="noteTemplate" type="text/x-handlebars-template">
-        <div id="tableScroll">
-            <table id="notesTable">
-                {{#each this}}
-                <tr class="noteRow">
-                    <td class="dueDateCell">
-                        <p class="dueDateP">{{"myDateFormatter" dueDate "de-DE"}}</p>
-                        <div class="dueDateDiv">
-                            <input class="dueDateCB" type="checkbox" name="dueDate" value="completed" disabled {{#if
-                                   completed}} checked{{/if}}>completed {{#if completed}}[{{"myDateFormatter"
-                            completionDate "de-DE"}}]{{/if}}</input>
-                        </div>
-                    </td>
-                    <td class="titleDetailsAndPrioCell">
-                        <div class="titleAndPrio">
-                            <p class="noteTitle">{{title}}</p>
-                            <p class="notePrio">Prio {{priority}}</p>
-                        </div>
-                        <textarea class="noteDetails" name="noteDetails" readonly rows="2">{{details}}</textarea>
-                    </td>
-                    <td class="editDeleteCell" id="editDeleteCell{{id}}">
-                        <input class="editDeleteButton" id="editButton{{id}}" type="button" value="Edit"
-                               onclick="editNote({{id}})">
-                        <input class="editDeleteButton" type="button" value="Delete" onclick="deleteNote({{id}})">
-                    </td>
-                </tr>
-                {{/each}}
-            </table>
-        </div>
+        <table id="notesTable">
+            {{#each this}}
+            <tr class="noteRow" data-note-id="{{id}}">
+                <td class="dueDateCell">
+                    <p class="dueDateP">{{"myDateFormatter" dueDate "de-DE"}}</p>
+                    <div class="dueDateDiv">
+                        <input class="dueDateCB" type="checkbox" name="dueDate" value="completed" {{#if completed}} checked{{/if}}>
+                        completed {{#if completed}}[{{"myDateFormatter" completionDate "de-DE"}}]{{/if}}</input>
+                    </div>
+                </td>
+                <td class="titleDetailsAndPrioCell">
+                    <div class="titleAndPrio">
+                        <p class="noteTitle">{{title}}</p>
+                        <p class="notePrio">Prio {{priority}}</p>
+                    </div>
+                    <textarea class="noteDetails" name="noteDetails" readonly rows="2">{{details}}</textarea>
+                </td>
+                <td class="editDeleteCell" id="editDeleteCell{{id}}">
+                    <input class="editDeleteButton" id="editButton{{id}}" type="button" value="Edit"
+                           onclick="editNote({{id}})">
+                    <input class="editDeleteButton" type="button" value="Delete" onclick="deleteNote({{id}})">
+                </td>
+            </tr>
+            {{/each}}
+        </table>
     </script>
 </head>
 
@@ -84,11 +81,11 @@
         <div class="gridRow">
             <p class="gridLabel">Priority</p>
             <div class="gridRow" id="priorityGroup">
-                <input id="priority1" type="radio" name="proprity" title="Lowest Priority" value="1">
-                <input id="priority2" type="radio" name="proprity" title="Low Priority" value="2">
-                <input id="priority3" type="radio" name="proprity" title="Medium Priority" value="3">
-                <input id="priority4" type="radio" name="proprity" title="High Priority" value="4">
-                <input id="priority5" type="radio" name="proprity" title="Highest Priority" value="5">
+                <input id="priority1" type="radio" class="priority" name="proprity" title="Lowest Priority" value="1">
+                <input id="priority2" type="radio" class="priority" name="proprity" title="Low Priority" value="2">
+                <input id="priority3" type="radio" class="priority" name="proprity" title="Medium Priority" value="3">
+                <input id="priority4" type="radio" class="priority" name="proprity" title="High Priority" value="4">
+                <input id="priority5" type="radio" class="priority" name="proprity" title="Highest Priority" value="5">
             </div>
             <p class="gridRow" id="selectedPriority"></p>
         </div>
