@@ -8,6 +8,8 @@ var colorPreConfirmDelete = null;
 var namePreConfirmeDelete = null;
 var confirmId = null;
 
+var cnt = 1;
+
 log("jquery version " + $.fn.jquery);
 init();
 
@@ -21,8 +23,17 @@ function init() {
 
     initNoteRenderer();
 
+    // bind the displayed priority to currently set radio button, both in the editor
     $('input[type=radio][name=proprity]').change(function() {
         $("#selectedPriority").text(this.value);
+    });
+
+    // add listener to the notesSection, i.e. the part not newly rendered upon changes, but restrict it to the dueDateCD checkbox
+    $('#notesSection').on('click', '.dueDateCB', function(e) {
+        var id = getNoteIdOf(e.target); // in this case the same as "this" as event restricted to dueDateCB
+        log("clicked "  + id);
+        completeNote(id);
+        e.stopPropagation();
     });
 }
 

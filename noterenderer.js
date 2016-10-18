@@ -115,11 +115,4 @@ function renderNotes(list) {
     } else {
         noteSection.append(notesTableHtml(filteredList));
     }
-
-    $('.dueDateCB').on('click', function() {
-        var id = getNoteIdOf(this);
-        log("clicked "  + id);
-        completeNote(id);
-    });
-
 }
