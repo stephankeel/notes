@@ -11,7 +11,7 @@
                 <td class="dueDateCell">
                     <p class="dueDateP">{{"myDateFormatter" dueDate "de-DE"}}</p>
                     <div class="dueDateDiv">
-                        <input class="dueDateCB" type="checkbox" name="dueDate" value="completed" {{#if completed}} checked{{/if}}>
+                        <input class="dueDateCheckBox rowActionable" type="checkbox" name="completed" value="completed" {{#if completed}} checked{{/if}}>
                         completed {{#if completed}}[{{"myDateFormatter" completionDate "de-DE"}}]{{/if}}</input>
                     </div>
                 </td>
@@ -23,9 +23,8 @@
                     <textarea class="noteDetails" name="noteDetails" readonly rows="2">{{details}}</textarea>
                 </td>
                 <td class="editDeleteCell" id="editDeleteCell{{id}}">
-                    <input class="editDeleteButton" id="editButton{{id}}" type="button" value="Edit"
-                           onclick="editNote({{id}})">
-                    <input class="editDeleteButton" type="button" value="Delete" onclick="deleteNote({{id}})">
+                    <input class="editDeleteButton rowActionable" id="editButton{{id}}" type="button" name="edit" value="Edit">
+                    <input class="editDeleteButton rowActionable" type="button" name="delete" value="Delete">
                 </td>
             </tr>
             {{/each}}
@@ -46,17 +45,13 @@
 <div id="mainSection">
     <div id="mainContent">
         <div id="buttonSection">
-            <input type="button" id="createButton" value="New" onclick="createNote()">
+            <input type="button" id="createButton" value="New">
             <div id="sortingSection">
-                <input type="button" class="filterButton" id="orderByCompletionDateButton" value="By Completed Date"
-                       onclick="orderByCompletionDate()">
-                <input type="button" class="filterButton" id="orderByDueDateButton" value="By Due Date"
-                       onclick="orderByDueDate()">
-                <input type="button" class="filterButton" id="orderByPriorityButton" value="By Priority"
-                       onclick="orderByImportance()">
+                <input type="button" class="sortButton" id="orderByCompletionDateButton" value="By Completed Date">
+                <input type="button" class="sortButton" id="orderByDueDateButton" value="By Due Date">
+                <input type="button" class="sortButton" id="orderByPriorityButton" value="By Priority">
             </div>
-            <select id="notesSelection" title="Notes Filter"
-                    onchange="filterNotes(this.options[this.selectedIndex].value)">
+            <select id="notesFilterSelection" title="Notes Filter">
                 <option value="all notes">show all</option>
                 <option value="complete notes">show completed</option>
                 <option value="open notes">show open</option>
@@ -69,7 +64,7 @@
 </div>
 
 <div id="editSection">
-    <form id="editForm" name="editForm" title="Edit Form" action="javascript:saveEditResult()">
+    <form id="editForm" name="editForm" title="Edit Form">
         <div class="gridRow">
             <p class="gridLabel">Title</p>
             <input class="gridValue myInput" id="title" type="text" name="title" required><br>
@@ -95,8 +90,8 @@
                 <input class="myInput" id="dueDate" type="date" name="dueDate" required><br>
             </div>
         </div>
-        <input class="formButton" id="saveButton" type="submit" value="Save">
-        <input class="formButton" id="cancelButton" type="button" value="Cancel" onclick="cancelEdit()">
+        <input class="formButton" id="saveButton" type="button" value="Save">
+        <input class="formButton" id="cancelButton" type="button" value="Cancel">
         <p class="logArea"></p>
     </form>
 </div>

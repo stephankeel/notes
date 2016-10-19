@@ -1,14 +1,12 @@
-'use strict'
+'use strict';
 
 var CSS_STORAGE_KEY = "notes-css";
 
 var currentNote = null;
 var deleteConfirmed = false;
 var colorPreConfirmDelete = null;
-var namePreConfirmeDelete = null;
+var namePreConfirmDelete = null;
 var confirmId = null;
-
-var cnt = 1;
 
 log("jquery version " + $.fn.jquery);
 init();
@@ -23,17 +21,65 @@ function init() {
 
     initNoteRenderer();
 
-    // bind the displayed priority to currently set radio button, both in the editor
-    $('input[type=radio][name=proprity]').change(function() {
-        $("#selectedPriority").text(this.value);
+    // create button click action
+    $('#createButton').on('click', function (e) {
+        e.stopPropagation();
+        createNote();
+    });
+        
+    // sorting button click actions
+    $('#sortingSection').on('click', '.sortButton', function (e) {
+        e.stopPropagation();
+        log("sort button: " + e.target.id);
+        switch (e.target.id) {
+            case "orderByCompletionDateButton":
+                orderByCompletionDate();
+                break;
+            case "orderByDueDateButton":
+                orderByDueDate();
+                break;
+            case "orderByPriorityButton":
+                orderByImportance();
+                break;
+        }
     });
 
-    // add listener to the notesSection, i.e. the part not newly rendered upon changes, but restrict it to the dueDateCD checkbox
-    $('#notesSection').on('click', '.dueDateCB', function(e) {
-        var id = getNoteIdOf(e.target); // in this case the same as "this" as event restricted to dueDateCB
-        log("clicked "  + id);
-        completeNote(id);
+    $('#notesFilterSelection').on('change', function (e) {
         e.stopPropagation();
+        filterNotes(this.options[this.selectedIndex].value)
+    });
+
+    // note table row click actions
+    $('#notesSection').on('click', '.rowActionable', function (e) {
+        var id = getNoteIdOf(e.target);
+        e.stopPropagation();
+        log("clicked: " + e.target.name + " for id: " + id);
+        switch (e.target.name) {
+            case "edit":
+                editNote(id);
+                break;
+            case "delete":
+                deleteNote(id);
+                break;
+            case "completed":
+                completeNote(id);
+                break;
+        }
+    });
+
+    $('#saveButton').on('click', function(e) {
+        e.stopPropagation();
+        saveEditResult();
+    });
+
+    $('#cancelButton').on('click', function(e) {
+        e.stopPropagation();
+        cancelEdit()
+    });
+
+    // bind the displayed priority to currently set radio button, both in the editor
+    $('input[type=radio][name=proprity]').change(function () {
+        $("#selectedPriority").text(this.value);
     });
 }
 
@@ -67,7 +113,7 @@ function createNote() {
 function completeNote(id) {
     currentNote = getNoteById(id);
     currentNote.completed = !currentNote.completed;
-    if (currentNote.completed){
+    if (currentNote.completed) {
         currentNote.completionDate = new Date();
     } else {
         currentNote.completionDate = null;
@@ -93,7 +139,7 @@ function editNote(id) {
 
 function abortDelete() {
     $("#editDeleteCell" + confirmId).css("background-color", colorPreConfirmDelete);
-    $("#editButton" + confirmId).val(namePreConfirmeDelete);
+    $("#editButton" + confirmId).val(namePreConfirmDelete);
     deleteConfirmed = false;
     confirmId = null;
     log("abort cancel note");
@@ -112,9 +158,6 @@ function saveEditResult() {
 
     setNoteById(currentNote);
 
-    var formData = JSON.stringify($("#editForm").serializeArray());
-    log("save edit result: " + formData);
-
     reRender();
 
     // Activate the main page again
@@ -132,7 +175,7 @@ function deleteNote(id) {
         confirmId = id;
         colorPreConfirmDelete = $("#editDeleteCell" + id).css("background-color");
         $("#editDeleteCell" + id).css("background-color", "red");
-        namePreConfirmeDelete = $("#editButton" + id).val();
+        namePreConfirmDelete = $("#editButton" + id).val();
         $("#editButton" + id).val("Abort");
     } else if (id != confirmId) {
         abortDelete();
@@ -145,7 +188,6 @@ function deleteNote(id) {
 }
 
 function selectCSS(id, name, save = true) {
-//    document.getElementById(id).setAttribute('href', name);
     $("#" + id).attr('href', name);
     if (save) {
         var selectedCSS = {id: id, name: name};

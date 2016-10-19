@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var NOTE_RENDERING_CONTEXT_KEY = "notes-rendering";
 
@@ -14,7 +14,7 @@ if (storedRenderingContext) {
     if (!renderingContext.filter) {
         renderingContext.filter = "all notes";
     }
-    $("#notesSelection").val(renderingContext.filter);
+    $("#notesFilterSelection").val(renderingContext.filter);
 }
 
 var notesTableHtml;
@@ -39,7 +39,7 @@ function initNoteRenderer() {
 }
 
 var renderNotesByDueDate = function(order = 1) {
-    $(".filterButton").css("border-color", "");
+    $(".sortButton").css("border-color", "");
     $("#orderByDueDateButton").css("border-color", "red");
     storeRenderingContextBySorting(1, order)
     var list = noteList.sort((a, b) => (a.dueDate - b.dueDate) * order);
@@ -47,15 +47,15 @@ var renderNotesByDueDate = function(order = 1) {
 }
 
 var renderNotesByCompletionDate = function(order = 1) {
-    $(".filterButton").css("border-color", "");
+    $(".sortButton").css("border-color", "");
     $("#orderByCompletionDateButton").css("border-color", "red");
     storeRenderingContextBySorting(2, order)
-    var list = noteList.sort((a, b) => (b.completionDate - a.completionDate) * order);
+    var list = noteList.sort((a, b) => (a.completionDate - b.completionDate) * order);
     renderNotes(list);
 }
 
 var renderNotesByPriority = function(order = 1) {
-    $(".filterButton").css("border-color", "");
+    $(".sortButton").css("border-color", "");
     $("#orderByPriorityButton").css("border-color", "red");
     storeRenderingContextBySorting(3, order)
     var list = noteList.sort((a, b) => (b.priority - a.priority) * order);
