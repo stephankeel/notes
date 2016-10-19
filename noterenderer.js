@@ -3,9 +3,9 @@
 var NOTE_RENDERING_CONTEXT_KEY = "notes-rendering";
 
 var renderingContext = {
-    order : 1,
-    sortId : 1,
-    filter : "all notes"
+    order: 1,
+    sortId: 1,
+    filter: "all notes"
 };
 
 var storedRenderingContext = localStorage.getItem(NOTE_RENDERING_CONTEXT_KEY);
@@ -38,7 +38,7 @@ function initNoteRenderer() {
     reRender();
 }
 
-var renderNotesByDueDate = function(order = 1) {
+var renderNotesByDueDate = function (order = 1) {
     $(".sortButton").css("border-color", "");
     $("#orderByDueDateButton").css("border-color", "red");
     storeRenderingContextBySorting(1, order)
@@ -46,15 +46,23 @@ var renderNotesByDueDate = function(order = 1) {
     renderNotes(list);
 }
 
-var renderNotesByCompletionDate = function(order = 1) {
+var renderNotesByCompletionDate = function (order = 1) {
     $(".sortButton").css("border-color", "");
     $("#orderByCompletionDateButton").css("border-color", "red");
     storeRenderingContextBySorting(2, order)
-    var list = noteList.sort((a, b) => (a.completionDate - b.completionDate) * order);
+    var list = noteList.sort((a, b) => {
+        if (!a.completionDate) {
+            return order;
+        } else if (!b.completionDate) {
+            return -1 * order;
+        } else {
+            return (a.completionDate - b.completionDate) * order
+        }
+    });
     renderNotes(list);
 }
 
-var renderNotesByPriority = function(order = 1) {
+var renderNotesByPriority = function (order = 1) {
     $(".sortButton").css("border-color", "");
     $("#orderByPriorityButton").css("border-color", "red");
     storeRenderingContextBySorting(3, order)
@@ -79,7 +87,7 @@ function storeRenderingContextByFiltering(filter) {
 }
 
 function storeRenderingContext() {
-    var buffer =  JSON.stringify(renderingContext);
+    var buffer = JSON.stringify(renderingContext);
     localStorage.setItem(NOTE_RENDERING_CONTEXT_KEY, buffer);
 }
 
