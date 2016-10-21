@@ -11,7 +11,8 @@
                 <td class="dueDateCell">
                     <p class="dueDateP">{{"myDateFormatter" dueDate "de-DE"}}</p>
                     <div class="dueDateDiv">
-                        <input class="dueDateCheckBox rowActionable" type="checkbox" name="completed" value="completed" {{#if completed}} checked{{/if}}>
+                        <input class="dueDateCheckBox rowActionable" type="checkbox" name="completed" value="completed"
+                               {{#if completed}} checked{{/if}}>
                         completed {{#if completed}}[{{"myDateFormatter" completionDate "de-DE"}}]{{/if}}</input>
                     </div>
                 </td>
@@ -23,7 +24,8 @@
                     <textarea class="noteDetails" name="noteDetails" readonly rows="2">{{details}}</textarea>
                 </td>
                 <td class="editDeleteCell" id="editDeleteCell{{id}}">
-                    <input class="editDeleteButton rowActionable" id="editButton{{id}}" type="button" name="edit" value="Edit">
+                    <input class="editDeleteButton rowActionable" id="editButton{{id}}" type="button" name="edit"
+                           value="Edit">
                     <input class="editDeleteButton rowActionable" type="button" name="delete" value="Delete">
                 </td>
             </tr>
@@ -66,15 +68,15 @@
 <div id="editSection">
     <form id="editForm" name="editForm" title="Edit Form">
         <div class="gridRow">
-            <p class="gridLabel">Title</p>
+            <label class="gridLabel" for="title">Title</label>
             <input class="gridValue myInput" id="title" type="text" name="title" required><br>
         </div>
         <div class="gridRow">
-            <p class="gridLabel">Details</p>
+            <label class="gridLabel" for="details">Details</label>
             <textarea class="gridValue myInput" id="details" name="details" rows="4" required></textarea><br>
         </div>
         <div class="gridRow">
-            <p class="gridLabel">Priority</p>
+            <label class="gridLabel" for="priorityGroup">Priority</label>
             <div class="gridRow" id="priorityGroup">
                 <input id="priority1" type="radio" class="priority" name="proprity" title="Lowest Priority" value="1">
                 <input id="priority2" type="radio" class="priority" name="proprity" title="Low Priority" value="2">
@@ -85,10 +87,8 @@
             <p class="gridRow" id="selectedPriority"></p>
         </div>
         <div class="gridRow">
-            <p class="gridLabel">Due Date</p>
-            <div class="gridValue" id="divDate">
-                <input class="myInput" id="dueDate" type="date" name="dueDate" required><br>
-            </div>
+            <label class="gridLabel" for="divDate">Due Date</label>
+            <input class="myInput" id="dueDate" type="date" name="dueDate" required><br>
         </div>
         <input class="formButton" id="saveButton" type="button" value="Save">
         <input class="formButton" id="cancelButton" type="button" value="Cancel">

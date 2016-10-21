@@ -40,6 +40,7 @@ input[type="button"], select {
 }
 
 #mainContent {
+    flex: 1;
     margin: 10px;
 }
 
@@ -143,21 +144,26 @@ input[type="button"], select {
 }
 
 .gridRow {
+    background-color: greenyellow;
     display: flex;
-    align-items: center;
     flex-wrap: nowrap;
-
+    align-items: center;
+    margin: 0 0 0.5em 0;
 }
 
+.gridLabel[for='details'] {
+    background-color: aqua;
+}
+
+
 .gridLabel {
+    background-color: red;
     flex: 0 0 8em;
     max-width: 8em;
 }
 
 .gridValue {
     flex: 5;
-    justify-content: flex-start;
-    align-content: flex-start;
 }
 
 #title {
@@ -173,19 +179,21 @@ input[type="button"], select {
 }
 
 #priorityGroup {
+    background-color: yellow;
     flex: 0 0;
+    margin: 0 2em 0.2em 0;
+    padding: 0;
 }
 
 .priority {
-      margin: 0.5em 0.5em 0.5em 0;
+    flex: 1;
 }
 
 #selectedPriority {
     flex: 1;
     margin-left: 10px;
-}
-
-#divDate {
+    background-color: gold;
+    margin: auto;
 }
 
 #dueDate {

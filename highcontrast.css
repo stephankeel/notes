@@ -1,13 +1,16 @@
+html {
+    min-width: 400px;
+}
+
 body {
     font-family: Arial, Verdana, sans-serif;
-    background-color: black;
-    border: solid dimgrey;
+    background-color: linen;
+    border: solid navajowhite;
     border-width: 0 5px;
-    color: white;
 }
 
 header, footer {
-    background-color: dimgrey;
+    background-color: navajowhite;
 }
 
 header {
@@ -20,21 +23,15 @@ footer {
     padding: 10px;
 }
 
-
 /* Shared */
 
-input[type="button"], select, .formButton {
+input[type="button"], select {
     font-size: 11pt;
-    color: white;
-    background: black;
-    border: solid white;
-    border-width: 1px;
 }
 
 .logArea:before {
     content: "Log: "
 }
-
 
 /* Overview Section - Main section */
 
@@ -55,7 +52,6 @@ input[type="button"], select, .formButton {
     height: 100%;
     margin: auto 10px auto auto;
     background-color: yellow;
-    color: black;
 }
 
 #buttonSection {
@@ -82,11 +78,11 @@ input[type="button"], select, .formButton {
 }
 
 #notesTable tr:nth-child(odd) {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 #notesTable tr:nth-child(even) {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .dueDateCell {
@@ -118,11 +114,9 @@ input[type="button"], select, .formButton {
 .noteDetails {
     font-family: inherit;
     font-size: inherit;
-    color: white;
     box-sizing: border-box;
     resize: vertical;
     width: 100%;
-    background-color:black;
 }
 
 .editDeleteCell {
@@ -135,11 +129,12 @@ input[type="button"], select, .formButton {
     height: 2.5em;
 }
 
-
 /* Edit section */
 
 #editSection {
     display: none;
+    flex: 1 1 500px;
+    flex-direction: column;
     font-size: 11pt;
 }
 
@@ -147,19 +142,51 @@ input[type="button"], select, .formButton {
     margin: 10px;
 }
 
-#editForm label {
-    position: absolute;
-    margin-top: 12px;
+.gridRow {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+
+}
+
+.gridLabel {
+    flex: 0 0 8em;
+    max-width: 8em;
+}
+
+.gridValue {
+    flex: 5;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+#title, label[for='title'] {
+    margin-bottom: 0.5em;
+}
+
+#details {
 }
 
 .myInput {
     font-family: inherit;
     font-size: inherit;
-    margin-top: 10px;
-    margin-left: 100px;
+
 }
 
 #priorityGroup {
+    flex: 0 0;
+}
+
+.priority {
+    margin: 0.5em 0.5em 0.5em 0;
+}
+
+#selectedPriority {
+    flex: 1;
+    margin-left: 10px;
+}
+
+#divDate {
 }
 
 #dueDate {
@@ -169,4 +196,3 @@ input[type="button"], select, .formButton {
     margin-top: 10px;
     margin-right: 1em;
 }
-
