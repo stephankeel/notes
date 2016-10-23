@@ -1,3 +1,4 @@
+var noteRenderer = (function() {
 'use strict';
 
 var NOTE_RENDERING_CONTEXT_KEY = "notes-rendering";
@@ -42,7 +43,7 @@ var renderNotesByDueDate = function (order = 1) {
     $(".sortButton").css("border-color", "");
     $("#orderByDueDateButton").css("border-color", "red");
     storeRenderingContextBySorting(1, order)
-    var list = noteList.sort((a, b) => (a.dueDate - b.dueDate) * order);
+    var list = noteModel.getAll().sort((a, b) => (a.dueDate - b.dueDate) * order);
     renderNotes(list);
 }
 
@@ -50,7 +51,7 @@ var renderNotesByCompletionDate = function (order = 1) {
     $(".sortButton").css("border-color", "");
     $("#orderByCompletionDateButton").css("border-color", "red");
     storeRenderingContextBySorting(2, order)
-    var list = noteList.sort((a, b) => {
+    var list = noteModel.getAll().sort((a, b) => {
         if (!a.completionDate) {
             return order;
         } else if (!b.completionDate) {
@@ -66,29 +67,13 @@ var renderNotesByPriority = function (order = 1) {
     $(".sortButton").css("border-color", "");
     $("#orderByPriorityButton").css("border-color", "red");
     storeRenderingContextBySorting(3, order)
-    var list = noteList.sort((a, b) => (b.priority - a.priority) * order);
+    var list = noteModel.getAll().sort((a, b) => (b.priority - a.priority) * order);
     renderNotes(list);
-}
-
-function storeRenderingContextBySorting(sortId, order) {
-    renderingContext.sortId = sortId;
-    renderingContext.order = order;
-    storeRenderingContext();
 }
 
 function renderFilteredNotes(filter) {
     renderingContext.filter = filter;
     reRender();
-}
-
-function storeRenderingContextByFiltering(filter) {
-    renderingContext.filter = filter;
-    storeRenderingContext();
-}
-
-function storeRenderingContext() {
-    var buffer = JSON.stringify(renderingContext);
-    localStorage.setItem(NOTE_RENDERING_CONTEXT_KEY, buffer);
 }
 
 function reRender() {
@@ -123,4 +108,24 @@ function renderNotes(list) {
     } else {
         noteSection.append(notesTableHtml(filteredList));
     }
+
+}function storeRenderingContextBySorting(sortId, order) {
+    renderingContext.sortId = sortId;
+    renderingContext.order = order;
+    storeRenderingContext();
 }
+
+function storeRenderingContext() {
+    var buffer = JSON.stringify(renderingContext);
+    localStorage.setItem(NOTE_RENDERING_CONTEXT_KEY, buffer);
+}
+
+return {
+    init: initNoteRenderer,
+    renderByDueDate: renderNotesByDueDate,
+    renderByCompletionDate: renderNotesByCompletionDate,
+    renderByPriority: renderNotesByPriority,
+    renderFilteredNotes: renderFilteredNotes,
+    reRender: reRender
+};
+}());

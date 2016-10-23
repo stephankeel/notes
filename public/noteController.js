@@ -19,7 +19,7 @@ function init() {
         selectCSS(selectedCSS.id, selectedCSS.name, false);
     }
 
-    initNoteRenderer();
+    noteRenderer.init();
 
     // create button click action
     $('#createButton').on('click', function (e) {
@@ -118,8 +118,8 @@ function completeNote(id) {
     } else {
         currentNote.completionDate = null;
     }
-    setNoteById(currentNote);
-    reRender();
+    noteModel.addOrUpdate(currentNote);
+    noteRenderer.reRender();
 }
 
 function editNote(id) {
@@ -127,7 +127,7 @@ function editNote(id) {
         abortDelete();
     } else {
         log("edit note: " + id);
-        currentNote = getNoteById(id);
+        currentNote = noteModel.get(id);
         $("#title").val(currentNote.title);
         $("#details").val(currentNote.details);
         $("#priority" + currentNote.priority).prop("checked", true);
@@ -156,9 +156,9 @@ function saveEditResult() {
     var ddd = $("#dueDate").val();
     currentNote.dueDate = new Date($("#dueDate").val());
 
-    setNoteById(currentNote);
+    noteModel.addOrUpdate(currentNote);
 
-    reRender();
+    noteRenderer.reRender();
 
     // Activate the main page again
     activateMain();
@@ -182,8 +182,8 @@ function deleteNote(id) {
     } else {
         deleteConfirmed = false;
         log("delete note: " + id);
-        deleteNoteById(id);
-        reRender();
+        noteModel.delete(id);
+        noteRenderer.reRender();
     }
 }
 
@@ -199,22 +199,22 @@ function selectCSS(id, name, save = true) {
 
 function orderByCompletionDate() {
     log("orderByCompletionDate clicked");
-    renderNotesByCompletionDate();
+    noteRenderer.renderByCompletionDate();
 }
 
 function orderByDueDate() {
     log("orderByDueDate clicked");
-    renderNotesByDueDate();
+    noteRenderer.renderByDueDate();
 }
 
 function orderByImportance() {
     log("orderByImportance clicked");
-    renderNotesByPriority();
+    noteRenderer.renderByPriority();
 }
 
 function filterNotes(value) {
     log("filterNotes: " + value);
-    renderFilteredNotes(value);
+    noteRenderer.renderFilteredNotes(value);
 }
 
 function log(text) {
