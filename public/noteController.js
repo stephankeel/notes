@@ -111,7 +111,7 @@ function createNote() {
 }
 
 function completeNote(id) {
-    currentNote = getNoteById(id);
+    currentNote = noteModel.get(id);
     currentNote.completed = !currentNote.completed;
     if (currentNote.completed) {
         currentNote.completionDate = new Date();
