@@ -21,6 +21,11 @@ function init() {
 
     noteRenderer.init();
 
+    $('#styleSelection').on('change', function (e) {
+        e.stopPropagation();
+        selectCSS('style', this.options[this.selectedIndex].value);
+    });
+
     // create button click action
     $('#createButton').on('click', function (e) {
         e.stopPropagation();
