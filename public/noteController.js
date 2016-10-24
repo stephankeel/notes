@@ -9,6 +9,8 @@
     var namePreConfirmDelete = null;
     var confirmId = null;
 
+    history.pushState({id: 'Note App'}, '', 'index.html');
+
     init();
 
     function init() {

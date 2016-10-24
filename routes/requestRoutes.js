@@ -9,9 +9,9 @@ router.get('/', function (req, res, next) {
     console.log('providing note index file');
     controller.showIndexPage(re, res, next);
 });
-router.get('/dummy', function (req, res, next) {
-    console.log('creating a dummy note');
-    controller.dummy(req, res, next);
+router.get('/test', function (req, res, next) {
+    console.log('creating test notes');
+    controller.test(req, res, next);
 });
 router.get('/notes', function (req, res, next) {
     console.log('providing note list');

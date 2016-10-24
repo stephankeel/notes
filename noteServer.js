@@ -7,19 +7,24 @@ var requestRoutes = require('./routes/requestRoutes.js');
 var server = express();
 var router = express.Router();
 
+var errorHandler = function(err, req, res, next) {
+    console.log("ErrorHandler: " + err);
+}
+
 var inputLogger = function(req, res, next) {
     console.log(req.method + ": " + req.url);
     next();
 }
 
 var outputLogger = function(req, res, next) {
-    console.log("Ststus code: " + res.statusCode);
+    console.log("Status code: " + res.statusCode);
     next();
 }
 
+server.use(errorHandler);
 server.use(express.static(__dirname + '/public'));
 server.use(bodyParser.urlencoded({extended: false}));
-//server.use(bodyParser.json());
+server.use(bodyParser.json());
 server.use(inputLogger);
 server.use(requestRoutes);
 server.use(outputLogger);
