@@ -74,7 +74,7 @@
             }
         });
 
-        $('#saveButton').on('click', function (e) {
+        $('#editForm').on('submit', function (e) {
             e.stopPropagation();
             saveEditResult();
         });
