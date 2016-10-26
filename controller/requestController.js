@@ -43,44 +43,31 @@ function createTestNotes(req, res, next) {
 
 function createNote(req, res, next) {
     var body = req.body;
-    var txt = JSON.stringify(body);
-    console.log("Post(1): " + txt);
-    console.log(body);
+    console.log('Post: ' + JSON.stringify(body));
     var note = new Note(body.title, body.details, body.dueDate, body.priority);
-    console.log("Post(2): " + JSON.stringify(note));
     storeService.add(note, function(err, dbNote) {
         res.type('application/json');
         res.end(JSON.stringify(dbNote));
         next();
     });
-/*
+}
+
+function updateNote(req, res, next) {
     var body = req.body;
+    console.log("Put(1): " + JSON.stringify(body));
     var note = new Note(body.title, body.details, body.dueDate, body.priority);
-    console.log(note.title + ", " + note.details + ", " + note.dueDate + ", " + note.completed);
-    storeService.add(note, function (err, dbNote) {
+    note.completionDate = body.completionDate;
+    note.completed = body.completed;
+    console.log("Put(2): " + JSON.stringify(note));
+    storeService.update(req.params.id, note, function(err, dbNote) {
         res.type('application/json');
         res.end(JSON.stringify(dbNote));
         next();
     });
-*/
-}
-
-function updateNote(req, res, next) {
-    next(new Error("Update not yet implemented, id: " + req.params.id + " -- " + JSON.stringify(req.body)));
-    /*
-     TODO
-     var note = new Note(title, details, dueDate, prio);
-     storeService.update(req.param.id, note, function(err, dbNote) {
-     res.type('application/json');
-     res.end(JSON.stringify(dbNote));
-     next();
-     });
-     */
 }
 
 function getAllNotes(req, res, next) {
     storeService.getAll(function (err, dbNotes) {
-//        res.json(JSON.stringify(dbNotes));  // an alternativ
         res.type('application/json');
         res.end(JSON.stringify(dbNotes));
         next();

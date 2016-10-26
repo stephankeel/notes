@@ -125,7 +125,7 @@
         } else {
             currentNote.completionDate = null;
         }
-        noteModel.addOrUpdate(currentNote);
+        noteModel.update(currentNote);
         noteRenderer.reRender();
     }
 
@@ -156,6 +156,7 @@
         // Store the note
         if (!currentNote) {
             currentNote = new Note();
+            currentNote.id = null;
         }
         currentNote.title = $("#title").val();
         currentNote.details = $("#details").val();
@@ -163,7 +164,11 @@
         var ddd = $("#dueDate").val();
         currentNote.dueDate = new Date($("#dueDate").val());
 
-        noteModel.addOrUpdate(currentNote);
+        if (currentNote.id) {
+            noteModel.update(currentNote);
+        } else {
+            noteModel.add(currentNote);
+        }
 
         noteRenderer.reRender();
 
