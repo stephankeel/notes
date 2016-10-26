@@ -4,14 +4,13 @@ html {
 
 body {
     font-family: Arial, Verdana, sans-serif;
-    color: white;
-    background-color: rgba(0,0,0,0.8);
-    border: solid black;
+    background-color: linen;
+    border: solid navajowhite;
     border-width: 0 5px;
 }
 
 header, footer {
-    background-color: black;
+    background-color: navajowhite;
 }
 
 header {
@@ -46,12 +45,14 @@ input[type="button"], select {
 }
 
 #mainTitle {
+    color: red;
     margin: 10px;
 }
 
 #styleSelection {
     height: 100%;
     margin: auto 10px auto auto;
+    background-color: yellow;
 }
 
 #buttonSection {
@@ -78,11 +79,11 @@ input[type="button"], select {
 }
 
 #notesTable tr:nth-child(odd) {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 #notesTable tr:nth-child(even) {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .dueDateCell {
@@ -143,6 +144,7 @@ input[type="button"], select {
 }
 
 .gridRow {
+    background-color: greenyellow;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -150,10 +152,12 @@ input[type="button"], select {
 }
 
 .gridLabel[for='details'] {
+    background-color: aqua;
 }
 
 
 .gridLabel {
+    background-color: red;
     flex: 0 0 8em;
     max-width: 8em;
 }
@@ -175,6 +179,7 @@ input[type="button"], select {
 }
 
 #priorityGroup {
+    background-color: yellow;
     flex: 0 0;
     margin: 0 2em 0.2em 0;
     padding: 0;
@@ -187,6 +192,7 @@ input[type="button"], select {
 #selectedPriority {
     flex: 1;
     margin-left: 10px;
+    background-color: gold;
     margin: auto;
 }
 
