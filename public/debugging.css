@@ -58,6 +58,7 @@ input[type="button"], select {
 #buttonSection {
     display: flex;
     margin: 10px 0;
+    background-color: greenyellow;
 }
 
 #sortingSection {
@@ -76,6 +77,7 @@ input[type="button"], select {
 
 #notesTable {
     width: 100%;
+    background-color: lightblue;
 }
 
 #notesTable tr:nth-child(odd) {
@@ -101,6 +103,7 @@ input[type="button"], select {
 }
 
 .titleDetailsAndPrioCell {
+    width: auto;
 }
 
 .titleAndPrio {
@@ -121,11 +124,16 @@ input[type="button"], select {
 }
 
 .editDeleteCell {
-    width: 3em;
-    vertical-align: top;
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 5em;
+    background-color: aqua;
 }
 
 .editDeleteButton {
+    width: 100%;
     margin: 0.5em;
     height: 2.5em;
 }
