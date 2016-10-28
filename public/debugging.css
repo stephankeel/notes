@@ -1,3 +1,7 @@
+* {
+    //box-sizing: content-box;
+}
+
 html {
     min-width: 500px;
 }
@@ -110,10 +114,6 @@ input[type="button"], select {
 }
 
 .dueDateDiv {
-    display: flex;
-    margin: -3px;
-    flex-direction: row;
-    align: right;
 }
 
 .titleDetailsAndPrioCell {
@@ -138,19 +138,14 @@ input[type="button"], select {
 }
 
 .editDeleteCell {
-    display: flex;
-    flex: 1 1 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding-right: 0.5em;
-    width: 5em;
+    width: 6em;
+    vertical-align: top;
     background-color: aqua;
 }
 
 .editDeleteButton {
     width: 100%;
-    margin: 0.5em;
-    height: 2.5em;
+    margin: 0.2em 0;
 }
 
 /* Edit section */
