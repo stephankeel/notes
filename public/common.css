@@ -4,11 +4,19 @@
 }
 
 html {
-    min-width: 500px;
+    min-width: 400px;
+}
+
+button {
+    min-width: 5em;
 }
 
 button:hover, select:hover {
     transform: scale(1, 1.25);
+}
+
+input[type='checkbox']:hover {
+    transform: scale(1.25);
 }
 
 body {
@@ -21,9 +29,15 @@ header {
 }
 
 footer {
+    display: flex;
+    flex: 1 1 100%;
+    justify-content: space-between;
     font-size: 80%;
-    text-align-last: right;
     padding: 10px;
+}
+
+.logArea {
+    opacity: 0;
 }
 
 /* Overview Section - Main section */
@@ -106,10 +120,11 @@ footer {
 .editDeleteCell {
     width: 5em;
     vertical-align: top;
+    text-align: center;
 }
 
 .editDeleteButton {
-    width: 100%;
+    width: 90%;
     margin: 0.2em 0;
 }
 
@@ -134,7 +149,7 @@ footer {
 }
 
 .gridLabel {
-    flex: 0 0 8em;
+    flex: 0 0 6em;
     max-width: 8em;
 }
 
@@ -164,7 +179,10 @@ footer {
     margin: auto;
 }
 
-.formButton {
-    margin-top: 10px;
-    margin-right: 1em;
+.formButtonSection {
+    margin-top: 1em;
+}
+
+#saveButton {
+    margin-right: 0.5em;
 }

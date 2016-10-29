@@ -9,6 +9,10 @@ header, footer {
 
 /* Overview Section - Main section */
 
+.selectedSortButton {
+    border-color: red;
+}
+
 #notesSection {
     background-color: white;
 }

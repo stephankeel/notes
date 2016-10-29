@@ -10,6 +10,13 @@ header, footer {
 
 /* Overview Section - Main section */
 
+.selectedSortButton {
+    color: white;
+    border-color: yellow;
+    border-width: medium;
+    background-color: rgba(0,0,0, 0.9);
+}
+
 #notesSection {
     background-color: white;
 }

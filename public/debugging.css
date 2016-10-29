@@ -7,6 +7,10 @@ header, footer {
     background-color: navajowhite;
 }
 
+.logArea {
+    opacity: 1;
+}
+
 /* Overview Section - Main section */
 
 #styleSelection {
@@ -19,6 +23,10 @@ header, footer {
 
 #sortingSection {
     background-color: yellow;
+}
+
+.selectedSortButton {
+    border-color: red;
 }
 
 #notesSection {

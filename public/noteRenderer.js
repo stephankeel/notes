@@ -40,17 +40,17 @@ function initNoteRenderer() {
 }
 
 var renderNotesByDueDate = function (order = 1) {
-    $(".sortButton").css("border-color", "");
-    $("#orderByDueDateButton").css("border-color", "red");
-    storeRenderingContextBySorting(1, order)
+    $(".sortButton").removeClass('selectedSortButton');
+    $("#orderByDueDateButton").addClass('selectedSortButton');
+    storeRenderingContextBySorting(1, order);
     var list = noteModel.getAll().sort((a, b) => (a.dueDate - b.dueDate) * order);
     renderNotes(list);
 }
 
 var renderNotesByCompletionDate = function (order = 1) {
-    $(".sortButton").css("border-color", "");
-    $("#orderByCompletionDateButton").css("border-color", "red");
-    storeRenderingContextBySorting(2, order)
+    $(".sortButton").removeClass('selectedSortButton');
+    $("#orderByCompletionDateButton").addClass('selectedSortButton');
+    storeRenderingContextBySorting(2, order);
     var list = noteModel.getAll().sort((a, b) => {
         if (!a.completionDate) {
             return order;
@@ -64,9 +64,9 @@ var renderNotesByCompletionDate = function (order = 1) {
 }
 
 var renderNotesByPriority = function (order = 1) {
-    $(".sortButton").css("border-color", "");
-    $("#orderByPriorityButton").css("border-color", "red");
-    storeRenderingContextBySorting(3, order)
+    $(".sortButton").removeClass('selectedSortButton');
+    $("#orderByPriorityButton").addClass('selectedSortButton');
+    storeRenderingContextBySorting(3, order);
     var list = noteModel.getAll().sort((a, b) => (b.priority - a.priority) * order);
     renderNotes(list);
 }

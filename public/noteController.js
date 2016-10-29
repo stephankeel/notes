@@ -40,20 +40,20 @@
             log("sort button: " + e.target.id);
             switch (e.target.id) {
                 case "orderByCompletionDateButton":
-                    orderByCompletionDate();
+                    noteRenderer.renderByCompletionDate();
                     break;
                 case "orderByDueDateButton":
-                    orderByDueDate();
+                    noteRenderer.renderByDueDate();
                     break;
                 case "orderByPriorityButton":
-                    orderByImportance();
+                    noteRenderer.renderByPriority();
                     break;
             }
         });
 
         $('#notesFilterSelection').on('change', function (e) {
             e.stopPropagation();
-            filterNotes(this.options[this.selectedIndex].value)
+            noteRenderer.renderFilteredNotes(this.options[this.selectedIndex].value);
         });
 
         // note table row click actions
@@ -207,26 +207,6 @@
         } else {
             $("#styleSelection").val(name);
         }
-    }
-
-    function orderByCompletionDate() {
-        log("orderByCompletionDate clicked");
-        noteRenderer.renderByCompletionDate();
-    }
-
-    function orderByDueDate() {
-        log("orderByDueDate clicked");
-        noteRenderer.renderByDueDate();
-    }
-
-    function orderByImportance() {
-        log("orderByImportance clicked");
-        noteRenderer.renderByPriority();
-    }
-
-    function filterNotes(value) {
-        log("filterNotes: " + value);
-        noteRenderer.renderFilteredNotes(value);
     }
 
     function log(text) {

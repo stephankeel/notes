@@ -61,7 +61,6 @@
         </div>
 
         <div id="notesSection"></div> <!-- notes table will be added here using handlebars -->
-        <p class="logArea"></p>
     </div>
 </div>
 
@@ -90,13 +89,17 @@
             <label class="gridLabel" for="dueDate">Due Date</label>
             <input class="myInput" id="dueDate" type="date" name="dueDate" required><br>
         </div>
-        <button class="formButton" id="saveButton" type="submit">Save</button>
-        <button class="formButton" id="cancelButton">Cancel</button>
-        <p class="logArea"></p>
+        <div class="formButtonSection">
+            <button class="formButton" id="saveButton" type="submit">Save</button>
+            <button class="formButton" id="cancelButton">Cancel</button>
+        </div>
     </form>
 </div>
 
-<footer>&copy; 2016 Stephan Keel</footer>
+<footer>
+    <p class="logArea"></p>
+    <p class="copyright">&copy; 2016 Stephan Keel</p>
+</footer>
 
 <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js'></script>
