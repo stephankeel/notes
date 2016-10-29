@@ -146,7 +146,7 @@
 
     function abortDelete() {
         $("#editDeleteCell" + confirmId).css("background-color", colorPreConfirmDelete);
-        $("#editButton" + confirmId).val(namePreConfirmDelete);
+        $("#editButton" + confirmId).html(namePreConfirmDelete);
         deleteConfirmed = false;
         confirmId = null;
         log("abort cancel note");
@@ -187,8 +187,8 @@
             confirmId = id;
             colorPreConfirmDelete = $("#editDeleteCell" + id).css("background-color");
             $("#editDeleteCell" + id).css("background-color", "red");
-            namePreConfirmDelete = $("#editButton" + id).val();
-            $("#editButton" + id).val("Abort");
+            namePreConfirmDelete = $("#editButton" + id).html();
+            $("#editButton" + id).html("Abort");
         } else if (id != confirmId) {
             abortDelete();
         } else {

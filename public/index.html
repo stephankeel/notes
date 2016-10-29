@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Notes-Application</title>
+    <link rel="stylesheet" href="common.css">
     <link id="style" rel="stylesheet" href="standard.css">
     <script id="noteTemplate" type="text/x-handlebars-template">
         <table id="notesTable">
@@ -24,9 +25,8 @@
                     <textarea class="noteDetails" name="noteDetails" readonly rows="2">{{details}}</textarea>
                 </td>
                 <td class="editDeleteCell" id="editDeleteCell{{id}}">
-                    <input class="editDeleteButton rowActionable" id="editButton{{id}}" type="button" name="edit"
-                           value="Edit">
-                    <input class="editDeleteButton rowActionable" type="button" name="delete" value="Delete">
+                    <button class="editDeleteButton rowActionable" id="editButton{{id}}" name="edit">Edit</button>
+                    <button class="editDeleteButton rowActionable" name="delete">Delete</button>
                 </td>
             </tr>
             {{/each}}
@@ -47,11 +47,11 @@
 <div id="mainSection">
     <div id="mainContent">
         <div id="buttonSection">
-            <input type="button" id="createButton" value="New">
+            <button id="createButton">New</button>
             <div id="sortingSection">
-                <input type="button" class="sortButton" id="orderByCompletionDateButton" value="By Completed Date">
-                <input type="button" class="sortButton" id="orderByDueDateButton" value="By Due Date">
-                <input type="button" class="sortButton" id="orderByPriorityButton" value="By Priority">
+                <button class="sortButton" id="orderByCompletionDateButton">By Completed Date</button>
+                <button class="sortButton" id="orderByDueDateButton">By Due Date</button>
+                <button class="sortButton" id="orderByPriorityButton">By Priority</button>
             </div>
             <select id="notesFilterSelection" title="Notes Filter">
                 <option value="all notes">show all</option>
@@ -87,11 +87,11 @@
             <p class="gridRow" id="selectedPriority"></p>
         </div>
         <div class="gridRow">
-            <label class="gridLabel" for="divDate">Due Date</label>
+            <label class="gridLabel" for="dueDate">Due Date</label>
             <input class="myInput" id="dueDate" type="date" name="dueDate" required><br>
         </div>
-        <input class="formButton" id="saveButton" type="submit" value="Save">
-        <input class="formButton" id="cancelButton" type="button" value="Cancel">
+        <button class="formButton" id="saveButton" type="submit">Save</button>
+        <button class="formButton" id="cancelButton">Cancel</button>
         <p class="logArea"></p>
     </form>
 </div>

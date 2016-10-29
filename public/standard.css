@@ -1,80 +1,19 @@
-html {
-    min-width: 400px;
-}
-
 body {
-    font-family: Arial, Verdana, sans-serif;
     background-color: linen;
     border: solid navajowhite;
-    border-width: 0 5px;
 }
 
 header, footer {
     background-color: navajowhite;
 }
 
-header {
-    display: flex;
-}
-
-footer {
-    font-size: 80%;
-    text-align-last: right;
-    padding: 10px;
-}
-
-/* Shared */
-
-input[type="button"], select {
-    font-size: 11pt;
-}
-
-.logArea:before {
-    content: "Log: "
-}
-
 /* Overview Section - Main section */
-
-#mainSection {
-    font-size: 11pt;
-}
-
-#mainContent {
-    flex: 1;
-    margin: 10px;
-}
-
-#mainTitle {
-    margin: 10px;
-}
-
-#styleSelection {
-    height: 100%;
-    margin: auto 10px auto auto;
-}
-
-#buttonSection {
-    display: flex;
-    margin: 10px 0;
-}
-
-#sortingSection {
-    margin-left: 1em;
-}
-
-#notesFilterSelection {
-    margin: auto 0 auto auto;
-}
 
 #notesSection {
     background-color: white;
 }
 
 /* Notes table */
-
-#notesTable {
-    width: 100%;
-}
 
 #notesTable tr:nth-child(odd) {
     background-color: rgba(0, 0, 0, 0.2);
@@ -84,116 +23,6 @@ input[type="button"], select {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-.dueDateCell {
-    padding: 5px;
-    width: 12.5em;
-    min-width: 12.5em;
-
-}
-
-.dueDateDiv {
-    display: flex;
-    margin: -3px;
-    flex-direction: row;
-    align: right;
-}
-
-.titleDetailsAndPrioCell {
-}
-
-.titleAndPrio {
-    display: flex;
-}
-
-.notePrio {
-    margin: auto 5px auto auto;
-    horiz-align: right;
-}
-
-.noteDetails {
-    font-family: inherit;
-    font-size: inherit;
-    box-sizing: border-box;
-    resize: vertical;
-    width: 100%;
-}
-
-.editDeleteCell {
-    width: 3em;
-    vertical-align: top;
-}
-
-.editDeleteButton {
-    margin: 0.5em;
-    height: 2.5em;
-}
-
 /* Edit section */
 
-#editSection {
-    display: none;
-    flex: 1 1 500px;
-    flex-direction: column;
-    font-size: 11pt;
-}
-
-#editForm {
-    margin: 10px;
-}
-
-.gridRow {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    margin: 0 0 0.5em 0;
-}
-
-.gridLabel[for='details'] {
-}
-
-
-.gridLabel {
-    flex: 0 0 8em;
-    max-width: 8em;
-}
-
-.gridValue {
-    flex: 5;
-}
-
-#title {
-}
-
-#details {
-}
-
-.myInput {
-    font-family: inherit;
-    font-size: inherit;
-
-}
-
-#priorityGroup {
-    flex: 0 0;
-    margin: 0 2em 0.2em 0;
-    padding: 0;
-}
-
-.priority {
-    flex: 1;
-}
-
-#selectedPriority {
-    flex: 1;
-    margin-left: 10px;
-    margin: auto;
-}
-
-#dueDate {
-}
-
-.formButton {
-    margin-top: 10px;
-    margin-right: 1em;
-}
 
