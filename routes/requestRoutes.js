@@ -13,6 +13,10 @@ router.get('/test', function (req, res, next) {
     console.log('creating test notes');
     controller.test(req, res, next);
 });
+router.get('/error', function (req, res, next) {
+    console.log('producing an error');
+    throw new Error("This is a test error");
+});
 router.get('/notes', function (req, res, next) {
     console.log('providing note list');
     controller.getAll(req, res, next);
