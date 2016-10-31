@@ -126,7 +126,6 @@
             currentNote.completionDate = null;
         }
         noteModel.update(currentNote);
-        noteRenderer.reRender();
     }
 
     function editNote(id) {
@@ -170,8 +169,6 @@
             noteModel.add(currentNote);
         }
 
-        noteRenderer.reRender();
-
         // Activate the main page again
         activateMain();
     }
@@ -195,7 +192,6 @@
             deleteConfirmed = false;
             log("delete note: " + id);
             noteModel.delete(id);
-            noteRenderer.reRender();
         }
     }
 

@@ -75,19 +75,14 @@ var noteModel = (function ($) {
     }
 
     function addNote(note) {
-        $.ajax({method: 'POST', dataType: 'json', url: '/notes', data: note}).done(function (msg) {
+        $.ajax({method: 'POST', dataType: 'application/json', url: '/notes', data: note}).done(function (msg) {
             var serverNote = msg;
-            var serverNote = new Note(serverNote.title, serverNote.details, serverNote.dueDate, serverNote.priority);
-            serverNote.id = serverNote._id;
-            serverNote.completed = serverNote.completed;
-            serverNote.completionDate = serverNote.completionDate;
-            if (serverNote.dueDate) {
-                serverNote.dueDate = new Date(serverNote.dueDate);
+            var note = new Note(serverNote.title, serverNote.details, serverNote.dueDate, serverNote.priority);
+            note.id = serverNote._id;
+            if (note.dueDate) {
+                note.dueDate = new Date(note.dueDate);
             }
-            if (serverNote.completionDate) {
-                serverNote.completionDate = new Date(serverNote.completionDate);
-            }
-            noteList.push(serverNote);
+            noteList.push(note);
             saveNoteList();
             console.log('success: ' + msg);
             noteRenderer.reRender();
@@ -95,23 +90,25 @@ var noteModel = (function ($) {
             console.log('Add failed: ' + msg);
             noteList[indexOfNoteWithId(note.id)] = note;
             saveNoteList();
+            noteRenderer.reRender();
         });
     }
 
     function updateNote(note) {
-        $.ajax({method: 'PUT', dataType: 'json', url: '/notes/' + note.id, data: note}).done(function (msg) {
+        $.ajax({method: 'PUT', dataType: 'application/json', url: '/notes/' + note.id, data: note}).done(function (msg) {
             var serverNote = msg;
-            var serverNote = new Note(serverNote.title, serverNote.details, serverNote.dueDate, serverNote.priority);
-            serverNote.id = serverNote._id;
-            serverNote.completed = serverNote.completed;
-            serverNote.completionDate = serverNote.completionDate;
-            if (serverNote.dueDate) {
-                serverNote.dueDate = new Date(serverNote.dueDate);
+            var note = new Note(serverNote.title, serverNote.details, serverNote.dueDate, serverNote.priority);
+            note.id = serverNote._id;
+            if (note.dueDate) {
+                note.dueDate = new Date(note.dueDate);
             }
-            if (serverNote.completionDate) {
-                serverNote.completionDate = new Date(serverNote.completionDate);
+            note.completed = serverNote.completed == "true";
+            if (note.completed) {
+                note.completionDate = new Date(serverNote.completionDate);
+            } else {
+                note.completionDate = null;
             }
-            noteList[indexOfNoteWithId(serverNote.id)] = serverNote;
+            noteList[indexOfNoteWithId(note.id)] = note;
             saveNoteList();
             console.log('success: ' + msg);
             noteRenderer.reRender();
@@ -119,11 +116,12 @@ var noteModel = (function ($) {
             console.log('Update of ' + note.id + ' failed: ' + msg);
             noteList[indexOfNoteWithId(note.id)] = note;
             saveNoteList();
+            noteRenderer.reRender();
         });
     }
 
     function deleteNote(id) {
-        $.ajax({method: 'DELETE', dataType: 'json', url: '/notes/' + id}).done(function (msg) {
+        $.ajax({method: 'DELETE', dataType: 'application/json', url: '/notes/' + id}).done(function (msg) {
             console.log("Deleted: " + msg);
             noteList.splice(indexOfNoteWithId(id), 1);
             saveNoteList();

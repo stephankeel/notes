@@ -23,8 +23,8 @@ function addNote(note, callback) {
 }
 
 function updateNote(id, note, callback) {
-    db.update({_id: id}, note, function (err, dbNote) {
-        callback(err, dbNote);
+    db.update({_id: id}, note, {}, function (err, cnt, dbNote) {
+        getNote(id, callback);
     });
 }
 

@@ -47,7 +47,8 @@ function createNote(req, res, next) {
     var note = new Note(body.title, body.details, body.dueDate, body.priority);
     storeService.add(note, function(err, dbNote) {
         res.type('application/json');
-        res.end(JSON.stringify(dbNote));
+        var jsonStr = JSON.stringify(dbNote);
+        res.end(jsonStr);
         next();
     });
 }
@@ -61,7 +62,8 @@ function updateNote(req, res, next) {
     console.log("Put(2): " + JSON.stringify(note));
     storeService.update(req.params.id, note, function(err, dbNote) {
         res.type('application/json');
-        res.end(JSON.stringify(dbNote));
+        var jsonStr = JSON.stringify(dbNote);
+        res.end(jsonStr);
         next();
     });
 }

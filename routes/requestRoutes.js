@@ -42,13 +42,4 @@ router.delete('/notes', function (req, res, next) {
     controller.deleteAll(req, res, next);
 });
 
-function logAndReply(req, res, next, txt) {
-    console.log(txt);
-    res.type('text/html');
-    res.write('<html>');
-    res.write('<p>' + txt + '</p>');
-    res.end('</html>');
-    next();
-}
-
 module.exports = router;
