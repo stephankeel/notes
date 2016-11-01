@@ -20,7 +20,7 @@ if (storedRenderingContext) {
 
 var notesTableHtml;
 
-function initNoteRenderer() {
+function init() {
     var noteTemplateText = $("#noteTemplate").html();
     Handlebars.registerHelper("myDateFormatter", function (dateTime, format = "de-DE") {
         if (dateTime) {
@@ -121,7 +121,7 @@ function storeRenderingContext() {
 }
 
 return {
-    init: initNoteRenderer,
+    init: init,
     renderByDueDate: renderNotesByDueDate,
     renderByCompletionDate: renderNotesByCompletionDate,
     renderByPriority: renderNotesByPriority,

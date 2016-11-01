@@ -43,57 +43,48 @@ function createTestNotes(req, res, next) {
 
 function createNote(req, res, next) {
     var body = req.body;
-    console.log('Post: ' + JSON.stringify(body));
     var note = new Note(body.title, body.details, body.dueDate, body.priority);
+    console.log('Post: ' + JSON.stringify(note));
     storeService.add(note, function(err, dbNote) {
-        res.type('application/json');
-        var jsonStr = JSON.stringify(dbNote);
-        res.end(jsonStr);
+        res.json(dbNote);
         next();
     });
 }
 
 function updateNote(req, res, next) {
     var body = req.body;
-    console.log("Put(1): " + JSON.stringify(body));
     var note = new Note(body.title, body.details, body.dueDate, body.priority);
     note.completionDate = body.completionDate;
     note.completed = body.completed;
-    console.log("Put(2): " + JSON.stringify(note));
+    console.log("Put: " + JSON.stringify(note));
     storeService.update(req.params.id, note, function(err, dbNote) {
-        res.type('application/json');
-        var jsonStr = JSON.stringify(dbNote);
-        res.end(jsonStr);
+        res.json(dbNote);
         next();
     });
 }
 
 function getAllNotes(req, res, next) {
     storeService.getAll(function (err, dbNotes) {
-        res.type('application/json');
-        res.end(JSON.stringify(dbNotes));
+        res.json(dbNotes);
         next();
     });
 }
 
 function getNote(req, res, next) {
     storeService.get(req.params.id, function (err, dbNote) {
-        res.type('application/json');
-        res.end(JSON.stringify(dbNote));
+        res.json(dbNote);
     });
 }
 
 function deleteNote(req, res, next) {
     storeService.delete(req.params.id, function (err, count) {
-        res.type('application/json');
-        res.end('{ "id": "' + req.params.id + '" }');
+        res.json({id : req.params.id});
     });
 }
 
 function deleteAllNotes(req, res, next) {
     storeService.deleteAll(function (err, count) {
-        res.type('application/json');
-        res.end('{ "count": "' + count + '" }');
+        res.json({count : count});
     });
 }
 

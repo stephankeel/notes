@@ -9,6 +9,11 @@
     var namePreConfirmDelete = null;
     var confirmId = null;
 
+    var reRenderCallback = function() {
+        noteRenderer.reRender()
+    };
+
+
     history.pushState({id: 'Note App'}, '', 'index.html');
 
     init();
@@ -22,6 +27,7 @@
         }
 
         noteRenderer.init();
+        noteModel.init(reRenderCallback);
 
         $('#styleSelection').on('change', function (e) {
             e.stopPropagation();
@@ -125,7 +131,7 @@
         } else {
             currentNote.completionDate = null;
         }
-        noteModel.update(currentNote);
+        noteModel.update(currentNote, reRenderCallback);
     }
 
     function editNote(id) {
@@ -164,9 +170,9 @@
         currentNote.dueDate = new Date($("#dueDate").val());
 
         if (currentNote.id) {
-            noteModel.update(currentNote);
+            noteModel.update(currentNote, reRenderCallback);
         } else {
-            noteModel.add(currentNote);
+            noteModel.add(currentNote, reRenderCallback);
         }
 
         // Activate the main page again
@@ -191,7 +197,7 @@
         } else {
             deleteConfirmed = false;
             log("delete note: " + id);
-            noteModel.delete(id);
+            noteModel.delete(id, reRenderCallback);
         }
     }
 

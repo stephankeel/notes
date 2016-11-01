@@ -6,29 +6,42 @@ var noteModel = (function ($) {
     var NOTE_LIST_STORAGE_KEY = "notes-note-list";
     var storedNotes = localStorage.getItem(NOTE_LIST_STORAGE_KEY);
 
-    // Loading all notes from the server if possible. Use local store as fallback
-    $.ajax({method: 'GET', dataType: 'json', url: '/notes'}).done(function (msg) {
-        console.log('success: ' + msg);
-        msg.forEach(serverNote => {
-            var note = new Note(serverNote.title, serverNote.details, serverNote.dueDate, serverNote.priority);
-            note.id = serverNote._id;
-            note.completed = serverNote.completed;
-            note.completionDate = serverNote.completionDate;
-            if (note.dueDate) {
-                note.dueDate = new Date(note.dueDate);
-            }
-            if (note.completionDate) {
-                note.completionDate = new Date(note.completionDate);
-            }
-            noteList.push(note);
-            console.log("noteList size: " + noteList.length);
+    function ajax(metod, url, data, headers) {
+        return $.ajax({
+            dataType: 'json',
+            contentType: 'application/json',
+            headers: headers,
+            method: metod,
+            url: url,
+            data: JSON.stringify(data)
         });
-        noteRenderer.reRender();
-    }).fail(function (msg) {
-        console.log('fail: ' + msg);
-        fallbackLoad();
-        noteRenderer.reRender();
-    });
+    }
+
+    function init(callback) {
+        // Loading all notes from the server if possible. Use local store as fallback
+        ajax('GET', '/notes').done(function (msg) {
+            console.log('success: ' + msg);
+            msg.forEach(serverNote => {
+                var note = new Note(serverNote.title, serverNote.details, serverNote.dueDate, serverNote.priority);
+                note.id = serverNote._id;
+                note.completed = serverNote.completed;
+                note.completionDate = serverNote.completionDate;
+                if (note.dueDate) {
+                    note.dueDate = new Date(note.dueDate);
+                }
+                if (note.completionDate) {
+                    note.completionDate = new Date(note.completionDate);
+                }
+                noteList.push(note);
+                console.log("noteList size: " + noteList.length);
+            });
+        }).fail(function (msg) {
+            console.log('fail: ' + msg);
+            fallbackLoad();
+        }).always(function() {
+            callback();
+        });
+    }
 
     function fallbackLoad() {
         if (storedNotes && storedNotes.length > 2) {
@@ -74,8 +87,8 @@ var noteModel = (function ($) {
         return noteList;
     }
 
-    function addNote(note) {
-        $.ajax({method: 'POST', dataType: 'application/json', url: '/notes', data: note}).done(function (msg) {
+    function addNote(note, callback) {
+        ajax('POST', '/notes', note).done(function (msg) {
             var serverNote = msg;
             var note = new Note(serverNote.title, serverNote.details, serverNote.dueDate, serverNote.priority);
             note.id = serverNote._id;
@@ -83,54 +96,51 @@ var noteModel = (function ($) {
                 note.dueDate = new Date(note.dueDate);
             }
             noteList.push(note);
-            saveNoteList();
             console.log('success: ' + msg);
-            noteRenderer.reRender();
         }).fail(function (msg) {
             console.log('Add failed: ' + msg);
             noteList[indexOfNoteWithId(note.id)] = note;
+        }).always(function () {
             saveNoteList();
-            noteRenderer.reRender();
+            callback();
         });
     }
 
-    function updateNote(note) {
-        $.ajax({method: 'PUT', dataType: 'application/json', url: '/notes/' + note.id, data: note}).done(function (msg) {
+    function updateNote(note, callback) {
+        ajax('PUT', '/notes/' + note.id, note).done(function (msg) {
             var serverNote = msg;
             var note = new Note(serverNote.title, serverNote.details, serverNote.dueDate, serverNote.priority);
             note.id = serverNote._id;
             if (note.dueDate) {
                 note.dueDate = new Date(note.dueDate);
             }
-            note.completed = serverNote.completed == "true";
+            note.completed = serverNote.completed;
             if (note.completed) {
                 note.completionDate = new Date(serverNote.completionDate);
             } else {
                 note.completionDate = null;
             }
             noteList[indexOfNoteWithId(note.id)] = note;
-            saveNoteList();
             console.log('success: ' + msg);
-            noteRenderer.reRender();
         }).fail(function (msg) {
             console.log('Update of ' + note.id + ' failed: ' + msg);
             noteList[indexOfNoteWithId(note.id)] = note;
+        }).always(function () {
             saveNoteList();
-            noteRenderer.reRender();
+            callback();
         });
     }
 
-    function deleteNote(id) {
-        $.ajax({method: 'DELETE', dataType: 'application/json', url: '/notes/' + id}).done(function (msg) {
+    function deleteNote(id, callback) {
+        ajax('DELETE', '/notes/' + id).done(function (msg) {
             console.log("Deleted: " + msg);
             noteList.splice(indexOfNoteWithId(id), 1);
-            saveNoteList();
-            noteRenderer.reRender();
         }).fail(function (msg) {
             console.log('Delete of ' + id + ' failed: ' + msg);
             noteList.splice(indexOfNoteWithId(id), 1);
+        }).always(function () {
             saveNoteList();
-            noteRenderer.reRender();
+            callback();
         });
     }
 
@@ -149,6 +159,7 @@ var noteModel = (function ($) {
     }
 
     return {
+        init : init,
         get: getNote,
         getAll: getAllNotes,
         add: addNote,
