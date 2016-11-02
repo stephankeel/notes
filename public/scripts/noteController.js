@@ -110,6 +110,7 @@
         if (id) {
             $("#mainTitle").text("Notes - Edit");
         } else {
+            $("#dueDate")[0].min = moment(new Date()).format("YYYY-MM-DD");
             $("#mainTitle").text("Notes - New");
         }
     }
