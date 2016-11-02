@@ -8,7 +8,10 @@
 
 // load the project scripts themselves
     doc.write('<script src="note.js"><\/script>');
-    doc.write('<script src="notemodel.js"><\/script>');
-    doc.write('<script src="noterenderer.js"><\/script>');
-    doc.write('<script src="notecontroller.js"><\/script>');
+    doc.write('<script src="localDataService.js"><\/script>');
+    doc.write('<script src="remoteDataService.js"><\/script>');
+    doc.write('<script src="noteModel.js"><\/script>');
+    doc.write('<script src="noteRenderer.js"><\/script>');
+    doc.write('<script src="noteController.js"><\/script>');
+
 }(window, document));

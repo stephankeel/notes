@@ -10,4 +10,10 @@ function Note(title, details, dueDate, priority) {
     this.priority = priority;
     this.completionDate = null;
     this.completed = false;
+
+    this.getMaxId = function () {
+        return nextNoteId;
+    }
 }
+
+
