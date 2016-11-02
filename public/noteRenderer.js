@@ -16,6 +16,7 @@ if (storedRenderingContext) {
         renderingContext.filter = "all notes";
     }
     $("#notesFilterSelection").val(renderingContext.filter);
+    setFilterIcon(renderingContext.filter);
 }
 
 var notesTableHtml;
@@ -72,8 +73,16 @@ var renderNotesByPriority = function (order = 1) {
 }
 
 function renderFilteredNotes(filter) {
+    setFilterIcon(filter);
     renderingContext.filter = filter;
     reRender();
+}
+
+function setFilterIcon(filter) {
+    $("#filterIcon").removeClass('hideFilterIcon');
+    if (filter === "all notes") {
+        $("#filterIcon").addClass('hideFilterIcon');
+    }
 }
 
 function reRender() {

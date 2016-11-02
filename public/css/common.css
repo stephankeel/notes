@@ -77,10 +77,21 @@ footer {
     margin: 0 0.2em;
 }
 
-#notesFilterSelection {
+#filterSection {
+    display: flex;
+    align-items: inherit;
+
     margin: auto 0 auto auto;
     width: auto;
     min-width: 0;
+}
+
+#filterIcon {
+    margin-right: 0.5em;
+}
+
+.hideFilterIcon {
+    opacity: 0;
 }
 
 /* Notes table */

@@ -29,6 +29,14 @@ header, footer {
     border-color: red;
 }
 
+#filterSection {
+    background-color: orange;
+}
+
+#notesFilterSelection {
+    background-color: crimson;
+}
+
 #notesSection {
     background-color: white;
 }

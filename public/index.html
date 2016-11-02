@@ -53,11 +53,14 @@
                 <button class="sortButton" id="orderByDueDateButton">By Due Date</button>
                 <button class="sortButton" id="orderByPriorityButton">By Priority</button>
             </div>
-            <select id="notesFilterSelection" title="Notes Filter">
-                <option value="all notes">show all</option>
-                <option value="complete notes">show completed</option>
-                <option value="open notes">show open</option>
-            </select>
+            <div id="filterSection">
+                <img id="filterIcon" src="images/filter.svg" title="filter activ indicator">
+                <select id="notesFilterSelection" title="Notes Filter">
+                    <option value="all notes">show all</option>
+                    <option value="complete notes">show completed</option>
+                    <option value="open notes">show open</option>
+                </select>
+            </div>
         </div>
 
         <div id="notesSection"></div> <!-- notes table will be added here using handlebars -->
