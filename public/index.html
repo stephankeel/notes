@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset='UTF-8'>
     <title>Notes-Application</title>
-    <link rel="stylesheet" href="css/common.css">
-    <link id="style" rel="stylesheet" href="css/standard.css">
-    <script id="noteTemplate" type="text/x-handlebars-template">
-        <table id="notesTable">
+    <link rel='stylesheet' href='css/common.css'>
+    <link id='style' rel='stylesheet' href='css/standard.css'>
+    <script id='noteTemplate' type='text/x-handlebars-template'>
+        <table id='notesTable'>
             {{#each this}}
-            <tr class="noteRow" data-note-id="{{id}}">
-                <td class="dueDateCell">
-                    <p class="dueDateP">{{"myDateFormatter" dueDate "de-DE"}}</p>
-                    <div class="dueDateDiv">
-                        <input class="dueDateCheckBox rowActionable" type="checkbox" name="completed" value="completed"
+            <tr class='noteRow' data-note-id='{{id}}'>
+                <td class='dueDateCell'>
+                    <p class='dueDateP'>{{'myDateFormatter' dueDate 'de-DE'}}</p>
+                    <div class='dueDateDiv'>
+                        <input class='dueDateCheckBox rowActionable' type='checkbox' name='completed' value='completed'
                                {{#if completed}} checked{{/if}}>
-                        completed {{#if completed}}[{{"myDateFormatter" completionDate "de-DE"}}]{{/if}}</input>
+                        completed {{#if completed}}[{{'myDateFormatter' completionDate 'de-DE'}}]{{/if}}</input>
                     </div>
                 </td>
-                <td class="titleDetailsAndPrioCell">
-                    <div class="titleAndPrio">
-                        <p class="noteTitle">{{title}}</p>
-                        <p class="notePrio">Prio {{priority}}</p>
+                <td class='titleDetailsAndPrioCell'>
+                    <div class='titleAndPrio'>
+                        <p class='noteTitle'>{{title}}</p>
+                        <p class='notePrio'>Prio {{priority}}</p>
                     </div>
-                    <textarea class="noteDetails" name="noteDetails" readonly rows="2">{{details}}</textarea>
+                    <textarea class='noteDetails' name='noteDetails' readonly rows='2'>{{details}}</textarea>
                 </td>
-                <td class="editDeleteCell" id="editDeleteCell{{id}}">
-                    <button class="editDeleteButton rowActionable" id="editButton{{id}}" name="edit">Edit</button>
-                    <button class="editDeleteButton rowActionable" name="delete">Delete</button>
+                <td class='editDeleteCell' id='editDeleteCell{{id}}'>
+                    <button class='editDeleteButton rowActionable' id='editButton{{id}}' name='edit'>Edit</button>
+                    <button class='editDeleteButton rowActionable' name='delete'>Delete</button>
                 </td>
             </tr>
             {{/each}}
@@ -36,77 +36,77 @@
 
 <body>
 <header>
-    <h1 id="mainTitle">Notes - Overview</h1>
-    <select id="styleSelection" title="CSS Selection">
-        <option value="css/standard.css">standard</option>
-        <option value="css/highcontrast.css">high contrast</option>
-        <option value="css/debugging.css">debugging</option>
+    <h1 id='mainTitle'>Notes - Overview</h1>
+    <select id='styleSelection' title='CSS Selection'>
+        <option value='css/standard.css'>standard</option>
+        <option value='css/highcontrast.css'>high contrast</option>
+        <option value='css/debugging.css'>debugging</option>
     </select>
 </header>
 
-<div id="mainSection">
-    <div id="mainContent">
-        <div id="buttonSection">
-            <button id="createButton">New</button>
-            <div id="sortingSection">
-                <button class="sortButton" id="orderByCompletionDateButton">By Completed Date</button>
-                <button class="sortButton" id="orderByDueDateButton">By Due Date</button>
-                <button class="sortButton" id="orderByPriorityButton">By Priority</button>
+<div id='mainSection'>
+    <div id='mainContent'>
+        <div id='buttonSection'>
+            <button id='createButton'>New</button>
+            <div id='sortingSection'>
+                <button class='sortButton' id='orderByCompletionDateButton'>By Completed Date</button>
+                <button class='sortButton' id='orderByDueDateButton'>By Due Date</button>
+                <button class='sortButton' id='orderByPriorityButton'>By Priority</button>
             </div>
-            <div id="filterSection">
-                <img id="filterIcon" src="images/filter.svg" title="filter activ indicator">
-                <select id="notesFilterSelection" title="Notes Filter">
-                    <option value="all notes">show all</option>
-                    <option value="complete notes">show completed</option>
-                    <option value="open notes">show open</option>
+            <div id='filterSection'>
+                <img id='filterIcon' src='images/filter.svg' title='filter activ indicator'>
+                <select id='notesFilterSelection' title='Notes Filter'>
+                    <option value='all notes'>show all</option>
+                    <option value='complete notes'>show completed</option>
+                    <option value='open notes'>show open</option>
                 </select>
             </div>
         </div>
 
-        <div id="notesSection"></div> <!-- notes table will be added here using handlebars -->
+        <div id='notesSection'></div> <!-- notes table will be added here using handlebars -->
     </div>
 </div>
 
-<div id="editSection">
-    <form id="editForm" name="editForm" title="Edit Form">
-        <div class="gridRow">
-            <label class="gridLabel" for="title">Title</label>
-            <input class="gridValue myInput" id="title" type="text" name="title" required><br>
+<div id='editSection'>
+    <form id='editForm' name='editForm' title='Edit Form'>
+        <div class='gridRow'>
+            <label class='gridLabel' for='title'>Title</label>
+            <input class='gridValue myInput' id='title' type='text' name='title' required><br>
         </div>
-        <div class="gridRow">
-            <label class="gridLabel" for="details">Details</label>
-            <textarea class="gridValue myInput" id="details" name="details" rows="4" required></textarea><br>
+        <div class='gridRow'>
+            <label class='gridLabel' for='details'>Details</label>
+            <textarea class='gridValue myInput' id='details' name='details' rows='4' required></textarea><br>
         </div>
-        <div class="gridRow">
-            <label class="gridLabel" for="priorityGroup">Priority</label>
-            <div class="gridRow" id="priorityGroup">
-                <input id="priority1" type="radio" class="priority" name="proprity" title="Lowest Priority" value="1">
-                <input id="priority2" type="radio" class="priority" name="proprity" title="Low Priority" value="2">
-                <input id="priority3" type="radio" class="priority" name="proprity" title="Medium Priority" value="3">
-                <input id="priority4" type="radio" class="priority" name="proprity" title="High Priority" value="4">
-                <input id="priority5" type="radio" class="priority" name="proprity" title="Highest Priority" value="5">
+        <div class='gridRow'>
+            <label class='gridLabel' for='priorityGroup'>Priority</label>
+            <div class='gridRow' id='priorityGroup'>
+                <input id='priority1' type='radio' class='priority' name='proprity' title='Lowest Priority' value='1'>
+                <input id='priority2' type='radio' class='priority' name='proprity' title='Low Priority' value='2'>
+                <input id='priority3' type='radio' class='priority' name='proprity' title='Medium Priority' value='3'>
+                <input id='priority4' type='radio' class='priority' name='proprity' title='High Priority' value='4'>
+                <input id='priority5' type='radio' class='priority' name='proprity' title='Highest Priority' value='5'>
             </div>
-            <p class="gridRow" id="selectedPriority"></p>
+            <p class='gridRow' id='selectedPriority'></p>
         </div>
-        <div class="gridRow">
-            <label class="gridLabel" for="dueDate">Due Date</label>
-            <input class="myInput" id="dueDate" type="date" name="dueDate" required><br>
+        <div class='gridRow'>
+            <label class='gridLabel' for='dueDate'>Due Date</label>
+            <input class='myInput' id='dueDate' type='date' name='dueDate' required><br>
         </div>
-        <div class="formButtonSection">
-            <button class="formButton" id="saveButton" type="submit">Save</button>
-            <button class="formButton" id="cancelButton">Cancel</button>
+        <div class='formButtonSection'>
+            <button class='formButton' id='saveButton' type='submit'>Save</button>
+            <button class='formButton' id='cancelButton'>Cancel</button>
         </div>
     </form>
 </div>
 
 <footer>
-    <p class="logArea"></p>
-    <p class="copyright">&copy; 2016 Stephan Keel</p>
+    <p class='logArea'></p>
+    <p class='copyright'>&copy; 2016 Stephan Keel</p>
 </footer>
 
 <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js'></script>
-<script src='noteinit.js'></script>
+<script src='scripts/noteInit.js'></script>
 </body>
 </html>

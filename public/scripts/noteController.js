@@ -104,11 +104,14 @@
         $("#mainTitle").text("Notes - Overview");
     }
 
-    function activateEdit() {
+    function activateEdit(id) {
         $("#mainSection").hide();
         $("#editSection").show();
-        $("#mainTitle").text("Notes - Edit");
-
+        if (id) {
+            $("#mainTitle").text("Notes - Edit");
+        } else {
+            $("#mainTitle").text("Notes - New");
+        }
     }
 
     function getNoteIdOf(element) {
@@ -145,7 +148,7 @@
             $("#priority" + currentNote.priority).prop("checked", true);
             $("#dueDate").val(moment(currentNote.dueDate).format('YYYY-MM-DD'));
             $("#selectedPriority").text(currentNote.priority);
-            activateEdit();
+            activateEdit(id);
         }
     }
 

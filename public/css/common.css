@@ -4,7 +4,7 @@
 }
 
 html {
-    min-width: 400px;
+    min-width: 500px;
 }
 
 button {
@@ -68,7 +68,7 @@ footer {
 
 #sortingSection {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
     margin-left: 1em;
 }
@@ -79,8 +79,8 @@ footer {
 
 #filterSection {
     display: flex;
+    flex-wrap: wrap;
     align-items: inherit;
-
     margin: auto 0 auto auto;
     width: auto;
     min-width: 0;
