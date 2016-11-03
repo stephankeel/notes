@@ -7,8 +7,10 @@ html {
     min-width: 500px;
 }
 
-button {
+button, select {
     min-width: 5em;
+    background-image: linear-gradient(to top, darkgrey 30%, white 100%);
+    box-shadow: 0.1em 0.2em 0.5em grey;
 }
 
 button:hover, select:hover {
@@ -26,6 +28,10 @@ body {
 
 header {
     display: flex;
+}
+
+#mainTitle {
+    text-shadow: 0.1em 0.1em 0.5em grey;
 }
 
 footer {

@@ -8,13 +8,17 @@ header, footer {
     background-color: black;
 }
 
+button, select {
+    box-shadow: none;
+}
+
 /* Overview Section - Main section */
 
-.selectedSortButton {
-    color: white;
+button.selectedSortButton {
     border-color: yellow;
     border-width: medium;
-    background-color: rgba(0,0,0, 0.9);
+    background-color: white;
+    background-image: none;
 }
 
 #notesSection {
