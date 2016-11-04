@@ -116,7 +116,7 @@
     }
 
     function getNoteIdOf(element) {
-        var tableRow = element.closest("tr");
+        var tableRow = $(element).closest("tr")[0];
         var id = tableRow.getAttribute("data-note-id");
         return id;
     }
