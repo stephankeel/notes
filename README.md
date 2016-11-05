@@ -1,5 +1,4 @@
-Project1 @ HSR, the notes web application
-=========================================
+<h1>Project1 @ HSR, the notes web application</h1>
 
 How to run
 ----------
@@ -8,12 +7,13 @@ How to run
         git clone http://github.com/stephankeel/notes.git
 
 2. Start the server:
+<pre>
         cd notes
         npm install
         node noteServer.js
 	
         --> NoteServer running at http://127.0.0.1:3001/
-	
+</pre>
 3. Open the browser on that address and port http://127.0.0.1:3001
 
 4. You may create a dummy data set by calling http://127.0.0.1:3001/test
