@@ -17,16 +17,8 @@ var remoteDataService = (function ($) {
         ajax('GET', '/notes').done(function (msg) {
             console.log('ajax get success: loaded notes successfully');
             msg.forEach(serverNote => {
-                var note = new Note(serverNote.title, serverNote.details, serverNote.dueDate, serverNote.priority);
+                var note = new Note(serverNote.title, serverNote.details, serverNote.dueDate, serverNote.priority, serverNote.completionDate, serverNote.completed);
                 note.id = serverNote._id;
-                note.completed = serverNote.completed;
-                note.completionDate = serverNote.completionDate;
-                if (note.dueDate) {
-                    note.dueDate = new Date(note.dueDate);
-                }
-                if (note.completionDate) {
-                    note.completionDate = new Date(note.completionDate);
-                }
                 itemCallback(note);
             });
             successCallback();
@@ -41,9 +33,6 @@ var remoteDataService = (function ($) {
             var serverNote = msg;
             var note = new Note(serverNote.title, serverNote.details, serverNote.dueDate, serverNote.priority);
             note.id = serverNote._id;
-            if (note.dueDate) {
-                note.dueDate = new Date(note.dueDate);
-            }
             console.log('ajax post success: id ' + note.id);
             successCallback(note);
         }).fail(function (msg) {
@@ -55,17 +44,8 @@ var remoteDataService = (function ($) {
     function updateTheNote(note, successCallback, failCallback) {
         ajax('PUT', '/notes/' + note.id, note).done(function (msg) {
             var serverNote = msg;
-            var note = new Note(serverNote.title, serverNote.details, serverNote.dueDate, serverNote.priority);
+            var note = new Note(serverNote.title, serverNote.details, serverNote.dueDate, serverNote.priority, serverNote.completionDate, serverNote.completed);
             note.id = serverNote._id;
-            if (note.dueDate) {
-                note.dueDate = new Date(note.dueDate);
-            }
-            note.completed = serverNote.completed;
-            if (note.completed) {
-                note.completionDate = new Date(serverNote.completionDate);
-            } else {
-                note.completionDate = null;
-            }
             console.log('ajax put success: id ' + note.id);
             successCallback(note);
         }).fail(function (msg) {
