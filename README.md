@@ -21,6 +21,7 @@
 <table>
 <tr><td>GET /</td><td>Provides index.html</td>
 <tr><td>GET /test</td><td>Creates dummy data and returns them</td>
+<tr><td> </td><td> </td>
 </table>
 
 GET /test           Creates dummy data and returns them
