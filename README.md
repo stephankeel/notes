@@ -13,8 +13,8 @@
 	
   --> NoteServer running at http://127.0.0.1:3001/
 </pre>
-<li>Open the browser on that address and port <code>http://127.0.0.1:3001</code></li>
-<li>You may create a dummy data set by calling <pre>http://127.0.0.1:3001/test</pre></li>
+<li>Open the browser on that address and port http://127.0.0.1:3001</li>
+<li>You may create a dummy data set by calling http://127.0.0.1:3001/test</li>
 </ol>
 
 <h2>Server REST-API</h2>
@@ -27,7 +27,7 @@
 <tr><td>POST /notes</td><td>Create a note</td>
 <tr><td>PUT /notes/id</td><td>Update the note with the provided id</td>
 <tr><td>DELETE /notes/id</td><td>Delete the note with the provided id</td>
-<tr><td>DELETE /notes</td><td>eletes all notes</td>
+<tr><td>DELETE /notes</td><td>Deletes all notes</td>
 </table>
 
 <h2>Note</h2>
