@@ -10,9 +10,9 @@ How to run
 2. Start the server:
         cd notes
         npm install
-	    node noteServer.js
+        node noteServer.js
 	
-	    --> NoteServer running at http://127.0.0.1:3001/
+        --> NoteServer running at http://127.0.0.1:3001/
 	
 3. Open the browser on that address and port http://127.0.0.1:3001
 
