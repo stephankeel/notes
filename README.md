@@ -18,6 +18,7 @@
 </ol>
 
 <h2>Server REST-API</h2>
+<b>Data format:</b> JSON
 <table>
 <tr><td>GET /</td><td>Provides index.html</td>
 <tr><td>GET /test</td><td>Creates dummy data and returns them</td>
