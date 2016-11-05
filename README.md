@@ -21,22 +21,15 @@
 <table>
 <tr><td>GET /</td><td>Provides index.html</td>
 <tr><td>GET /test</td><td>Creates dummy data and returns them</td>
-<tr><td> </td><td> </td>
+<tr><td>GET /error</td><td>Creates a server error</td>
+<tr><td>GET /notes</td><td> Returns all notes</td>
+<tr><td>GET /notes/id</td><td>Returns the note with the provided id</td>
+<tr><td>POST /notes</td><td>Create a note</td>
+<tr><td>PUT /notes/id</td><td>Update the note with the provided id</td>
+<tr><td>DELETE /notes/id</td><td>Delete the note with the provided id</td>
+<tr><td>DELETE /notes</td><td>eletes all notes</td>
 </table>
-
-GET /test           Creates dummy data and returns them
-GET /error          Creates a server error
-GET /notes          Returns all notes
-GET /notes/id       Returns the note with the provided id
-
-POST /notes         Create a note
-
-PUT /notes/id       Update the note with the provided id
-
-DELETE /notes/id    Delete the note with the provided id
-DELETE /notes       Deletes all notes
-
 
 <h2>Note</h2>
 You may run the client as well without server. In that case all data is stored in the local storage.
-A dummy set of data will be created initially and as soon as all data has been delete.
+A dummy set of data will be created initially and as soon as all data has been deleted.
