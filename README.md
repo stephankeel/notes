@@ -1,26 +1,23 @@
 <h1>Project1 @ HSR, the notes web application</h1>
 
-How to run
-----------
-
-1. Download Notes from github:
-        git clone http://github.com/stephankeel/notes.git
-
-2. Start the server:
+<h2>How to run</h2>
+<ol>
+<li>Download Notes from github:
+<pre>git clone http://github.com/stephankeel/notes.git</pre>
+</li>
+<li>Start the server:
 <pre>
-        cd notes
-        npm install
-        node noteServer.js
+  cd notes
+  npm install
+  node noteServer.js
 	
-        --> NoteServer running at http://127.0.0.1:3001/
+  --> NoteServer running at http://127.0.0.1:3001/
 </pre>
-3. Open the browser on that address and port http://127.0.0.1:3001
+<li>Open the browser on that address and port http://127.0.0.1:3001</li>
+<li>You may create a dummy data set by calling http://127.0.0.1:3001/test</li>
+</ol>
 
-4. You may create a dummy data set by calling http://127.0.0.1:3001/test
-
-
-Server REST-API
----------------
+<h2>Server REST-API</h2>
 
 GET /               Provides index.html
 GET /test           Creates dummy data and returns them
