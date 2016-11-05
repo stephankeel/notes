@@ -73,18 +73,21 @@ function getAllNotes(req, res, next) {
 function getNote(req, res, next) {
     storeService.get(req.params.id, function (err, dbNote) {
         res.json(dbNote);
+        next();
     });
 }
 
 function deleteNote(req, res, next) {
     storeService.delete(req.params.id, function (err, count) {
         res.json({id : req.params.id});
+        next();
     });
 }
 
 function deleteAllNotes(req, res, next) {
     storeService.deleteAll(function (err, count) {
         res.json({count : count});
+        next();
     });
 }
 
