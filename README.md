@@ -9,7 +9,7 @@ How to run
 
 2. Start the server:
         cd notes
-	    npm install
+        npm install
 	    node noteServer.js
 	
 	    --> NoteServer running at http://127.0.0.1:3001/
