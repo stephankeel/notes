@@ -2,14 +2,16 @@
 
 var nextNoteId = 1;
 
-function Note(title, details, dueDate, priority) {
+function Note(title, details, dueDate, priority, completionDate = null, completed = false) {
     this.id = nextNoteId++;
     this.title = title;
     this.details = details;
-    this.dueDate = dueDate;
+    this.dueDate = new Date(dueDate);
     this.priority = priority;
-    this.completionDate = null;
-    this.completed = false;
+    if (completionDate) {
+        this.completionDate = new Date(completionDate);
+    }
+    this.completed = completed;
 
     this.getMaxId = function () {
         return nextNoteId;
