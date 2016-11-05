@@ -31,5 +31,7 @@
 </table>
 
 <h2>Note</h2>
-You may run the client as well without server. In that case all data is stored in the local storage.
-A dummy set of data will be created initially and as soon as all data has been deleted.
+<ul>
+<li>You may run the client as well without server. In that case all data is stored in the local storage.
+A dummy set of data will be created initially and as soon as all data has been deleted.</li>
+<li>A note is completed by clicking the 'completed' checkbox in the table.</li>
