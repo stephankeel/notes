@@ -24,6 +24,8 @@
         if (storedCSS) {
             var selectedCSS = JSON.parse(storedCSS);
             selectCSS(selectedCSS.id, selectedCSS.name, false);
+        } else {
+            selectCSS('style', 'css/standard.css', false);
         }
 
         noteRenderer.init();
