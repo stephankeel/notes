@@ -11,6 +11,7 @@
     doc.write('<script src="./scripts/note.js"><\/script>');
     doc.write('<script src="./scripts/localDataService.js"><\/script>');
     doc.write('<script src="./scripts/remoteDataService.js"><\/script>');
+    doc.write('<script src="./scripts/webSocketClient.js"><\/script>');
     doc.write('<script src="./scripts/noteModel.js"><\/script>');
     doc.write('<script src="./scripts/noteRenderer.js"><\/script>');
     doc.write('<script src="./scripts/noteController.js"><\/script>');

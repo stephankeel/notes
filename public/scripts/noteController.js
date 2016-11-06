@@ -9,8 +9,11 @@
     var namePreConfirmDelete = null;
     var confirmId = null;
 
-    var reRenderCallback = function() {
-        noteRenderer.reRender()
+    var reRenderCallback = function (triggerBroadcast = false) {
+        noteRenderer.reRender();
+        if (triggerBroadcast) {
+            webSocketClient.triggerBroadcast();
+        }
     };
 
 
@@ -95,6 +98,20 @@
         // bind the displayed priority to currently set radio button, both in the editor
         $('input[type=radio][name=proprity]').change(function () {
             $("#selectedPriority").text(this.value);
+        });
+
+        webSocketClient.connect(function () {
+            console.log('WebSocket connected');
+        }, function (data) {
+            var mainVisible = $('#mainSection').is(':visible');
+            if (mainVisible) {
+                console.log('WebSocket data received: ' + JSON.stringify(data) + ' --> refresh');
+                location.reload();
+            }
+        }, function () {
+            console.log('WebSocket closed');
+        }, function (err) {
+            console.log('WebSocket error: ' + JSON.stringify(err));
         });
     }
 

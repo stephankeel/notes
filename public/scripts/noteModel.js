@@ -29,7 +29,7 @@ var noteModel = (function ($) {
     function addNote(note, successCallback) {
         remoteDataService.add(note, function (note) {
             noteList.push(note);
-            successCallback();
+            successCallback(true);
         }, function () {
             note.id = note.getMaxId();
             noteList.push(note);
@@ -43,7 +43,7 @@ var noteModel = (function ($) {
             note,
             function (note) {
                 noteList[indexOfNoteWithId(note.id)] = note;
-                successCallback();
+                successCallback(true);
             },
             function () {
                 noteList[indexOfNoteWithId(note.id)] = note;
@@ -56,7 +56,7 @@ var noteModel = (function ($) {
     function deleteNote(id, successCallback) {
         remoteDataService.delete(id, function (id) {
             noteList.splice(indexOfNoteWithId(id), 1);
-            successCallback();
+            successCallback(true);
         }, function () {
             noteList.splice(indexOfNoteWithId(id), 1);
             localDataService.persist(noteList);
