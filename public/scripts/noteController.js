@@ -1,7 +1,7 @@
 ;(function ($) {
     'use strict';
 
-    var CSS_STORAGE_KEY = "notes-css";
+    var CSS_STORAGE_KEY = 'notes-css';
 
     var currentNote = null;
     var deleteConfirmed = false;
@@ -22,7 +22,7 @@
     init();
 
     function init() {
-        log("jquery version " + $.fn.jquery);
+        log('jquery version ' + $.fn.jquery);
         var storedCSS = localStorage.getItem(CSS_STORAGE_KEY);
         if (storedCSS) {
             var selectedCSS = JSON.parse(storedCSS);
@@ -48,15 +48,15 @@
         // sorting button click actions
         $('#sortingSection').on('click', '.sortButton', function (e) {
             e.stopPropagation();
-            log("sort button: " + e.target.id);
+            log('sort button: ' + e.target.id);
             switch (e.target.id) {
-                case "orderByCompletionDateButton":
+                case 'orderByCompletionDateButton':
                     noteRenderer.renderByCompletionDate();
                     break;
-                case "orderByDueDateButton":
+                case 'orderByDueDateButton':
                     noteRenderer.renderByDueDate();
                     break;
-                case "orderByPriorityButton":
+                case 'orderByPriorityButton':
                     noteRenderer.renderByPriority();
                     break;
             }
@@ -71,15 +71,15 @@
         $('#notesSection').on('click', '.rowActionable', function (e) {
             var id = getNoteIdOf(e.target);
             e.stopPropagation();
-            log("clicked: " + e.target.name + " for id: " + id);
+            log('clicked: ' + e.target.name + ' for id: ' + id);
             switch (e.target.name) {
-                case "edit":
+                case 'edit':
                     editNote(id);
                     break;
-                case "delete":
+                case 'delete':
                     deleteNote(id);
                     break;
-                case "completed":
+                case 'completed':
                     completeNote(id);
                     break;
             }
@@ -97,7 +97,7 @@
 
         // bind the displayed priority to currently set radio button, both in the editor
         $('input[type=radio][name=proprity]').change(function () {
-            $("#selectedPriority").text(this.value);
+            $('#selectedPriority').text(this.value);
         });
 
         webSocketClient.connect(function () {
@@ -117,32 +117,32 @@
 
     function activateMain() {
         currentNote = null;
-        $("#editForm")[0].reset();
-        $("#mainSection").show();
-        $("#editSection").hide();
-        $("#mainTitle").text("Notes - Overview");
+        $('#editForm')[0].reset();
+        $('#mainSection').show();
+        $('#editSection').hide();
+        $('#mainTitle').text('Notes - Overview');
     }
 
     function activateEdit(id) {
-        $("#mainSection").hide();
-        $("#editSection").show();
+        $('#mainSection').hide();
+        $('#editSection').show();
         if (id) {
-            $("#mainTitle").text("Notes - Edit");
+            $('#mainTitle').text('Notes - Edit');
         } else {
-            $("#dueDate")[0].min = moment(new Date()).format("YYYY-MM-DD");
-            $("#mainTitle").text("Notes - New");
+            $('#dueDate')[0].min = moment(new Date()).format('YYYY-MM-DD');
+            $('#mainTitle').text('Notes - New');
         }
     }
 
     function getNoteIdOf(element) {
-        var tableRow = $(element).closest("tr")[0];
-        var id = tableRow.getAttribute("data-note-id");
+        var tableRow = $(element).closest('tr')[0];
+        var id = tableRow.getAttribute('data-note-id');
         return id;
     }
 
     function createNote() {
-        $("#priority1").prop("checked", true);
-        $("#selectedPriority").text(1);
+        $('#priority1').prop('checked', true);
+        $('#selectedPriority').text(1);
         activateEdit();
     }
 
@@ -161,23 +161,23 @@
         if (deleteConfirmed) {
             abortDelete();
         } else {
-            log("edit note: " + id);
+            log('edit note: ' + id);
             currentNote = noteModel.get(id);
-            $("#title").val(currentNote.title);
-            $("#details").val(currentNote.details);
-            $("#priority" + currentNote.priority).prop("checked", true);
-            $("#dueDate").val(moment(currentNote.dueDate).format('YYYY-MM-DD'));
-            $("#selectedPriority").text(currentNote.priority);
+            $('#title').val(currentNote.title);
+            $('#details').val(currentNote.details);
+            $('#priority' + currentNote.priority).prop('checked', true);
+            $('#dueDate').val(moment(currentNote.dueDate).format('YYYY-MM-DD'));
+            $('#selectedPriority').text(currentNote.priority);
             activateEdit(id);
         }
     }
 
     function abortDelete() {
-        $("#editDeleteCell" + confirmId).css("background-color", colorPreConfirmDelete);
-        $("#editButton" + confirmId).html(namePreConfirmDelete);
+        $('#editDeleteCell' + confirmId).css('background-color', colorPreConfirmDelete);
+        $('#editButton' + confirmId).html(namePreConfirmDelete);
         deleteConfirmed = false;
         confirmId = null;
-        log("abort cancel note");
+        log('abort cancel note');
     }
 
     function saveEditResult() {
@@ -186,11 +186,11 @@
             currentNote = new Note();
             currentNote.id = null;
         }
-        currentNote.title = $("#title").val();
-        currentNote.details = $("#details").val();
-        currentNote.priority = $("#priorityGroup input[type='radio']:checked").val();
-        var ddd = $("#dueDate").val();
-        currentNote.dueDate = new Date($("#dueDate").val());
+        currentNote.title = $('#title').val();
+        currentNote.details = $('#details').val();
+        currentNote.priority = $('#priorityGroup input[type="radio"]:checked').val();
+        var ddd = $('#dueDate').val();
+        currentNote.dueDate = new Date($('#dueDate').val());
 
         if (currentNote.id) {
             noteModel.update(currentNote, reRenderCallback);
@@ -203,7 +203,7 @@
     }
 
     function cancelEdit() {
-        log("edit cancelled");
+        log('edit cancelled');
         activateMain();
     }
 
@@ -211,31 +211,31 @@
         if (!deleteConfirmed) {
             deleteConfirmed = true;
             confirmId = id;
-            colorPreConfirmDelete = $("#editDeleteCell" + id).css("background-color");
-            $("#editDeleteCell" + id).css("background-color", "red");
-            namePreConfirmDelete = $("#editButton" + id).html();
-            $("#editButton" + id).html("Abort");
+            colorPreConfirmDelete = $('#editDeleteCell' + id).css('background-color');
+            $('#editDeleteCell' + id).css('background-color', 'red');
+            namePreConfirmDelete = $('#editButton' + id).html();
+            $('#editButton' + id).html('Abort');
         } else if (id != confirmId) {
             abortDelete();
         } else {
             deleteConfirmed = false;
-            log("delete note: " + id);
+            log('delete note: ' + id);
             noteModel.delete(id, reRenderCallback);
         }
     }
 
     function selectCSS(id, name, save = true) {
-        $("#" + id).attr('href', name);
+        $('#' + id).attr('href', name);
         if (save) {
             var selectedCSS = {id: id, name: name};
             localStorage.setItem(CSS_STORAGE_KEY, JSON.stringify(selectedCSS));
         } else {
-            $("#styleSelection").val(name);
+            $('#styleSelection').val(name);
         }
     }
 
     function log(text) {
-        $(".logArea").text(text);
+        $('.logArea').text(text);
     }
 
 }(jQuery));

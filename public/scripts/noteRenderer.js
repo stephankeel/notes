@@ -1,39 +1,39 @@
 var noteRenderer = (function() {
 'use strict';
 
-var NOTE_RENDERING_CONTEXT_KEY = "notes-rendering";
+var NOTE_RENDERING_CONTEXT_KEY = 'notes-rendering';
 
 var renderingContext = {
     order: 1,
     sortId: 1,
-    filter: "all notes"
+    filter: 'all notes'
 };
 
 var storedRenderingContext = localStorage.getItem(NOTE_RENDERING_CONTEXT_KEY);
 if (storedRenderingContext) {
     renderingContext = JSON.parse(storedRenderingContext);
     if (!renderingContext.filter) {
-        renderingContext.filter = "all notes";
+        renderingContext.filter = 'all notes';
     }
-    $("#notesFilterSelection").val(renderingContext.filter);
+    $('#notesFilterSelection').val(renderingContext.filter);
     setFilterIcon(renderingContext.filter);
 }
 
 var notesTableHtml;
 
 function init() {
-    var noteTemplateText = $("#noteTemplate").html();
-    Handlebars.registerHelper("myDateFormatter", function (dateTime, format = "de-DE") {
+    var noteTemplateText = $('#noteTemplate').html();
+    Handlebars.registerHelper('myDateFormatter', function (dateTime, format = 'de-DE') {
         if (dateTime) {
             var dateTimeStr = dateTime.toLocaleDateString(format);
             var nowStr = new Date().toLocaleDateString(format);
             if (dateTimeStr === nowStr) {
-                return "today";
+                return 'today';
             } else {
                 return dateTime.toLocaleDateString(format);
             }
         } else {
-            return "";
+            return '';
         }
     });
     notesTableHtml = Handlebars.compile(noteTemplateText);
@@ -41,16 +41,16 @@ function init() {
 }
 
 var renderNotesByDueDate = function (order = 1) {
-    $(".sortButton").removeClass('selectedSortButton');
-    $("#orderByDueDateButton").addClass('selectedSortButton');
+    $('.sortButton').removeClass('selectedSortButton');
+    $('#orderByDueDateButton').addClass('selectedSortButton');
     storeRenderingContextBySorting(1, order);
     var list = noteModel.getAll().sort((a, b) => (a.dueDate - b.dueDate) * order);
     renderNotes(list);
 }
 
 var renderNotesByCompletionDate = function (order = 1) {
-    $(".sortButton").removeClass('selectedSortButton');
-    $("#orderByCompletionDateButton").addClass('selectedSortButton');
+    $('.sortButton').removeClass('selectedSortButton');
+    $('#orderByCompletionDateButton').addClass('selectedSortButton');
     storeRenderingContextBySorting(2, order);
     var list = noteModel.getAll().sort((a, b) => {
         if (!a.completionDate) {
@@ -65,8 +65,8 @@ var renderNotesByCompletionDate = function (order = 1) {
 }
 
 var renderNotesByPriority = function (order = 1) {
-    $(".sortButton").removeClass('selectedSortButton');
-    $("#orderByPriorityButton").addClass('selectedSortButton');
+    $('.sortButton').removeClass('selectedSortButton');
+    $('#orderByPriorityButton').addClass('selectedSortButton');
     storeRenderingContextBySorting(3, order);
     var list = noteModel.getAll().sort((a, b) => (b.priority - a.priority) * order);
     renderNotes(list);
@@ -79,9 +79,9 @@ function renderFilteredNotes(filter) {
 }
 
 function setFilterIcon(filter) {
-    $("#filterIcon").removeClass('hideFilterIcon');
-    if (filter === "all notes") {
-        $("#filterIcon").addClass('hideFilterIcon');
+    $('#filterIcon').removeClass('hideFilterIcon');
+    if (filter === 'all notes') {
+        $('#filterIcon').addClass('hideFilterIcon');
     }
 }
 
@@ -100,14 +100,14 @@ function reRender() {
 }
 
 function renderNotes(list) {
-    var noteSection = $("#notesSection");
+    var noteSection = $('#notesSection');
     var filteredList = list.filter(note => {
         var filterVal = renderingContext.filter;
-        if (filterVal === "all notes") {
+        if (filterVal === 'all notes') {
             return true;
-        } else if (filterVal === "complete notes" && note.completed) {
+        } else if (filterVal === 'complete notes' && note.completed) {
             return true;
-        } else if (filterVal === "open notes" && !note.completed) {
+        } else if (filterVal === 'open notes' && !note.completed) {
             return true;
         }
         return false;
