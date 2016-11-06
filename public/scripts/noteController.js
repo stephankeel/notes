@@ -16,8 +16,9 @@
         }
     };
 
-
-    history.pushState({id: 'Note App'}, '', 'index.html');
+    if (history.length == 0 || history.state && history.state.id != 'Note App') {
+        history.pushState({id: 'Note App'}, '', 'index.html');
+    }
 
     init();
 
