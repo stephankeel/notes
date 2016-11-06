@@ -33,9 +33,9 @@
 
 <h2>WebSocket Implementation</h2>
 There is a very trivial implementation of WebSocket provided. It works like follows:
-If a PUT, POST or DELETE has been completed by the client, then he will send trigger
+If a PUT, POST or DELETE has been completed by the client, then he will call
 <pre>webSocketClient.triggerBroadcast()</pre>
-which will send a unique identifier to the WebSocket server which in turn broadcasts the
+which sends a unique identifier to the WebSocket server which in turn broadcasts the
 received message to all connected clients. The client that has requested the broadcast will
 ignore its reception, all others will reload the page, as long as not in the edit mode.
 
