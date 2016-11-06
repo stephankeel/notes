@@ -31,7 +31,7 @@
 <tr><td>DELETE /notes</td><td>Deletes all notes</td>
 </table>
 
-<h2>WebSocket Implementation</h2>
+<h2>WebSocket Integration</h2>
 There is a very trivial implementation of WebSocket provided. It works like follows:
 If a PUT, POST or DELETE has been completed by the client, then he will call
 <pre>webSocketClient.triggerBroadcast()</pre>
