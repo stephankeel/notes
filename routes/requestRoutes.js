@@ -15,7 +15,7 @@ router.get('/test', function (req, res, next) {
 });
 router.get('/error', function (req, res, next) {
     console.log('producing an error');
-    throw new Error("This is a test error");
+    throw new Error('This is a test error');
 });
 router.get('/notes', function (req, res, next) {
     console.log('providing note list');
@@ -30,7 +30,7 @@ router.post('/notes', function (req, res, next) {
     controller.create(req, res, next);
 });
 router.put('/notes/:id/', function (req, res, next) {
-    console.log('updating note with id ' + req.params.id + "\nbody: " + JSON.stringify(req.body));
+    console.log('updating note with id ' + req.params.id + '\nbody: ' + JSON.stringify(req.body));
     controller.update(req, res, next);
 });
 router.delete('/notes/:id/', function (req, res, next) {
