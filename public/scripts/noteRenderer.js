@@ -5,7 +5,7 @@ var noteRenderer = (function () {
 
     var renderingContext = {
         order: 1,
-        sortId: 1,
+        sortId: 1, // by dueDate
         filter: 'all notes'
     };
 

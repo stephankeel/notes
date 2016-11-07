@@ -7,19 +7,9 @@ var localDataService = (function ($) {
     function fallbackLoad(itemCallback) {
         if (storedNotes && storedNotes.length > 2) {
             var arr = JSON.parse(storedNotes);
-            arr.forEach(note => {
-                if (note.dueDate) {
-                    note.dueDate = new Date(note.dueDate);
-                }
-                if (note.completionDate) {
-                    note.completionDate = new Date(note.completionDate);
-                }
+            arr.forEach(n => {
+                var note = new Note(n.title, n.details, n.dueDate, n.priority, n.completionDate, n.complete);
                 itemCallback(note);
-
-                // restore the id for the next note created
-                if (nextNoteId <= note.id) {
-                    nextNoteId++;
-                }
             });
         } else {
             var notes = [];

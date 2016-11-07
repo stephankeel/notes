@@ -1,21 +1,23 @@
-'use strict';
+var Note = (function () {
 
-var nextNoteId = 1;
+    Note.nextNoteId = 1;
 
-function Note(title, details, dueDate, priority, completionDate = null, completed = false) {
-    this.id = nextNoteId++;
-    this.title = title;
-    this.details = details;
-    this.dueDate = new Date(dueDate);
-    this.priority = priority;
-    if (completionDate) {
-        this.completionDate = new Date(completionDate);
+    function Note(title, details, dueDate, priority, completionDate = null, completed = false) {
+        this.id = Note.nextNoteId++;
+        this.title = title;
+        this.details = details;
+        this.dueDate = new Date(dueDate);
+        this.priority = priority;
+        if (completionDate) {
+            this.completionDate = new Date(completionDate);
+        }
+        this.completed = completed;
     }
-    this.completed = completed;
 
-    this.getMaxId = function () {
-        return nextNoteId;
-    }
-}
+    Note.prototype.getMaxId = function () {
+        return Note.nextNoteId;
+    };
 
+    return Note;
+}());
 
