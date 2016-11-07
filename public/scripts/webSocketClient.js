@@ -19,23 +19,27 @@ var webSocketClient = (function ($, window) {
 
     function reconnect(connectedCallback, dataCallback, disconnectedCallback, errorCallback) {
         var rootUrl = $(location).attr('host');
-        ws = new WebSocket('ws:' + rootUrl);
-        ctx = 'ctx-' + uniqueId();
-        ws.onopen = function () {
-            connectedCallback();
-        };
-        ws.onmessage = function (msg) {
-            var data = msg.data;
-            if (data != ctx) {
-                dataCallback(data);
+        if (rootUrl) {
+            ws = new WebSocket('ws:' + rootUrl);
+            ctx = 'ctx-' + uniqueId();
+            ws.onopen = function () {
+                connectedCallback();
+            };
+            ws.onmessage = function (msg) {
+                var data = msg.data;
+                if (data != ctx) {
+                    dataCallback(data);
+                }
+            };
+            ws.onClose = function () {
+                disconnectedCallback();
+                this.setTimeout(reconnect, 1000);
+            };
+            ws.onerror = function (evt) {
+                errorCallback(evt);
             }
-        };
-        ws.onClose = function() {
-            disconnectedCallback();
-            this.setTimeout(reconnect, 1000);
-        };
-        ws.onerror = function(evt) {
-            errorCallback(evt);
+        } else {
+            errorCallback("No WebSocket server available");
         }
     }
 
