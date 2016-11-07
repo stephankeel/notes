@@ -8,7 +8,7 @@ var localDataService = (function ($) {
         if (storedNotes && storedNotes.length > 2) {
             var arr = JSON.parse(storedNotes);
             arr.forEach(n => {
-                var note = new Note(n.title, n.details, n.dueDate, n.priority, n.completionDate, n.complete);
+                var note = new Note(n.title, n.details, n.dueDate, n.priority, n.completionDate, n.completed);
                 itemCallback(note);
             });
         } else {
